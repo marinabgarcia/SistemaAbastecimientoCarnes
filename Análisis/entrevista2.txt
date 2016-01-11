@@ -1,0 +1,27 @@
+1) Falta envio de comprobantes
+     Factura
+Lista de Precio Proveedor (Una de cada proveedor)
+Lista de Precio Propia
+Remito
+Cualquier otro documento que intervenga en el proceso del negocio
+a
+2)Usuarios del sistema: leer caso de uso y poner quien hace cada cosa. (abm)
+
+3) Preguntar si: quiere q en el stock figure media res hasta q se corteo q directemente se carguen los pedazos
+
+4) Necesita identificar cada corte o es un producto mas, (q unidad de q animal le vendio a tal cliente)
+
+5)Al momento de realizar una venta, los artículos  también se venden por unidad? Es decir, si un cliente viene a comprar te pide unidades de artículos (ej 5 nalgas) 
+ o te pide los artículos por peso (ej 20 kg de nalga)?
+ LA VENTA ES POR UNIDAD GENERALMENTE PERO EL MONTO SIEMPRE ES POR EL PESO. ES DECIR, ME PIDEN 5 NALGAS SE LAS PESO Y LAS COBRO EN BASE AL PESO.
+
+6)Cuando ingresa mercadería al negocio por una compra que realizaron,  se pueden hacer dos cosas
+
+1) que el sistema  calcule automáticamente el monto total del remito (Ej el encargado indica que llego el producto "x", y el sistema registra y calcula consultando en la base de datos cuanto sale ese producto)
+ELIJO ESTA (va a tener q pasar todos los meses a la base de datos)
+2)  al momento del ingreso de la mercadería ustedes ingresen a mano el monto del recibo que deberán pagar la próxima semana.
+
+7) Compra: en q momento registra la compra, cuando le llega la mercaderia o cuando llama(me tienen q traer algo)
+
+8) Siempre q ingresa la mercaderia la deben pesar para saber la plata que tienen en sotck
+

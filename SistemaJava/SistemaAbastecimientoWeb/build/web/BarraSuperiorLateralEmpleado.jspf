@@ -1,0 +1,90 @@
+<%-- any content can be specified here e.g.: --%>
+<script type="text/javascript">
+    window.onload = function () {
+        var alto = window.innerHeight;
+        console.log(alto - 98);
+        //document.getElementById("barraLateral").style.minHeight = alto - 98 + "px";
+    };
+</script>
+
+<%@ page pageEncoding="UTF-8" %>
+<nav id="menuSup" role="navigation" class="navbar navbar-inverse navbar-static-top" style="margin-bottom:0px; background-color:rgba(204,35,46,1.00)">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle" style=" width:43px;">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button> 
+            <!--<img src="imagenes/logo_estancia.png" style=" width:25%; margin-top:-10px; padding-top:0px; overflow:visible"/>--> 
+            <a href="#" class="navbar-brand" style="margin:0px; padding:5px; width:280px; margin-bottom:5px;"><img src="imagenes/cow12.svg" style=" width:20%;display:inline"/>Abastecimiento de carnes</a>
+        </div>
+        <!-- Collection of nav links and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse" >
+            <ul class="nav navbar-nav">
+                <li class="hidden-xs hidden-sm"><a href="#" ><i class=" fa fa-sign-in fa-2x"></i><span class="badge">24</span></a></li>
+                <li class="hidden-xs hidden-sm"><a href="#"><i class=" fa fa-sign-out fa-2x"></i></a></li>
+                <li class="activo hidden-lg hidden-md"><a href="home.jsp" ><span class="glyphicon glyphicon-home" style=" display:inline; margin-right:10px;"></span><b>  Home</b></a></li>
+                <li class="hidden-lg hidden-md"><a href="compra.jsp"><span class="fa fa-shopping-cart" style=" display:inline; margin-right:10px;"></span>Compras</a></li>
+                <li class="hidden-lg hidden-md"><a href="venta.jsp"><span class="fa fa-money" style=" display:inline; margin-right:10px;"></span>Ventas</a></li>
+                <li class="hidden-lg hidden-md"><a href="#"><span class="fa fa-keyboard-o" style=" display:inline; margin-right:10px;"></span>Carga de datos</a></li>
+                <li class="hidden-lg hidden-md"><a href="articulos.jsp">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="imagenes/cow12n.svg" style=" width:4%;display:inline;margin-right:10px;"/>Artículos</a></li>
+                <li class="hidden-lg hidden-md"><a href="clientes.jsp">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="fa fa-users" style=" display:inline; margin-right:10px;"></span>Clientes</a></li>
+                <li class="hidden-lg hidden-md"><a href="proveedores.jsp">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="fa fa-truck" style=" display:inline; margin-right:10px;"></span>Proveedores</a></li>
+                <li class="hidden-lg hidden-md"><a href="usuarios.jsp">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="fa fa-truck" style=" display:inline; margin-right:10px;"></span>Usuarios</a></li>
+                <li class="hidden-lg hidden-md"><a href="listaprecios.jsp"><span class="fa fa-usd" style=" display:inline; margin-right:10px;"></span>Listas de precios</a></li>
+                <li class="hidden-lg hidden-md"><a href="stockArticulos.jsp"><span class="fa fa-pie-chart" style=" display:inline; margin-right:10px;"></span>Stock</a></li>
+            </ul>
+            <a class="hidden-xs hidden-sm" href="cerrarSesion"><i class="navbar-right fa fa-power-off" style=" color:white; margin:10px; padding-top:10px;"></i></a>
+            <ul class="nav navbar-nav navbar-right" style=" margin-right:20px ">          
+                <li class="dropdown">           
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#" style=""> Empleado <b class="caret"></b></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="home.jsp">Home</a></li>
+                        
+                        <li class="divider"></li>
+                        <li><a href="cerrarSesion">Cerrar Sesión</a></li>
+                    </ul>
+                </li>
+            </ul>            
+            <img class="img-circle navbar-right hidden-xs hidden-sm" src="imagenes/admin2.png" style=" width:4% ; "/>
+        </div>
+    </div>
+</nav>
+<div id="barraLateral" class="col-lg-2 col-md-2 hidden-xs hidden-sm" style=" background-color:white; margin:0px;padding:0px; padding-top:35px; height: 100%;margin-bottom: -100000px; overflow: hidden;padding-bottom: 100000px; border-right:2px inset rgba(227,227,227,1.00);">
+    <div class="col-lg-5 col-md-5" style="margin-left:0px;">
+        <img class="img-thumbnail" src="imagenes/admin2.png" style=" width:100%"/>
+    </div>
+    <div class="col-lg-7 col-md-7" style="margin-right:0px;">
+        <b>Empleado</b>
+        <br/>
+        <small><i class="fa fa-circle" style=" color: rgba(92,184,8,1.00); margin-right:10px; "></i>Online</small>
+    </div>
+    <div class="col-lg-12 col-md-12" style="margin:0px; padding:0px; margin-top:25px">
+        <small style="color:rgba(216,216,216,1.00); margin-left:10px; padding-bottom:25px;">Menu</small>
+        <ul  class="menuLateral nav nav-pills nav-stacked" style=" margin:0px;">
+            <li class="activo"><a href="home.jsp" ><span class="glyphicon glyphicon-home" style=" display:inline; margin-right:10px;"></span><b>  Home</b></a></li>
+            <li><a href="compra.jsp"><span class="fa fa-shopping-cart" style=" display:inline; margin-right:10px;"></span>Compras</a></li>
+            <li><a href="venta.jsp"><span class="fa fa-money" style=" display:inline; margin-right:10px;"></span>Ventas</a></li>
+            <li onclick="document.getElementById('navSecundario').style.display = 'block';"><a><span class="fa fa-keyboard-o" style=" display:inline; margin-right:10px;"></span>Carga de datos</a></li>
+
+        </ul>
+        <ul id="navSecundario" class=" menuLateral nav nav-pills nav-stacked" style=" display: none;">
+            <li><a href="articulos.jsp">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="imagenes/cow12n.svg" style=" width:7%;display:inline;margin-right:10px;"/>Artículos</a></li>
+            <li><a href="clientes.jsp">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="fa fa-users" style=" display:inline; margin-right:10px;"></span>Clientes</a></li>
+            <li><a href="proveedores.jsp">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="fa fa-truck" style=" display:inline; margin-right:10px;"></span>Proveedores</a></li>
+            <li><a href="usuarios.jsp">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="fa fa-user" style=" display:inline; margin-right:10px;"></span>Usuarios</a></li>
+        </ul>
+        <div style="border-top:2px inset rgba(227,227,227,.20); margin-top:5px; padding-top:5px; margin-bottom: 20px">
+            <small style="color:rgba(216,216,216,1.00); margin-left:10px; padding-bottom:25px;">Consultas</small>
+            <ul  class="menuLateral nav nav-pills nav-stacked" style=" margin:0px;">
+                <li><a href="listaprecios.jsp"><span class="fa fa-usd" style=" display:inline; margin-right:10px;"></span>Listas de precios</a></li>
+                <li><a href="stockArticulos.jsp"><span class="fa fa-pie-chart" style=" display:inline; margin-right:10px;"></span>Stock</a></li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+

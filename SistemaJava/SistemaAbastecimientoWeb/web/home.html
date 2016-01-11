@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sistema Abastecimiento de Carnes</title>
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/home.css" rel="stylesheet">
+        <!-- Roboto Font -->
+        <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300,500" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <nav id="menuSup" role="navigation" class="navbar navbar-inverse navbar-static-top" style="margin-bottom:0px; background-color:rgba(204,35,46,1.00)">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle" style=" width:43px;">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button> 
+                    <!--<img src="imagenes/logo_estancia.png" style=" width:25%; margin-top:-10px; padding-top:0px; overflow:visible"/>--> 
+                    <a href="#" class="navbar-brand" style="margin:0px; padding:5px; width:280px; margin-bottom:5px;"><img src="imagenes/cow12.svg" style=" width:20%;display:inline"/>Abastecimiento de carnes</a>
+                </div>
+                <!-- Collection of nav links and other content for toggling -->
+                <div id="navbarCollapse" class="collapse navbar-collapse" >
+                    <ul class="nav navbar-nav">
+                        <li class="hidden-xs hidden-sm"><a href="#" ><i class=" fa fa-sign-in fa-2x"></i><span class="badge">24</span></a></li>
+                        <li class="hidden-xs hidden-sm"><a href="#"><i class=" fa fa-sign-out fa-2x"></i></a></li>
+                        <li class="activo hidden-lg hidden-md"><a href="#" ><span class="glyphicon glyphicon-home" style=" display:inline; margin-right:10px;"></span><b>  Home</b></a></li>
+                        <li class="hidden-lg hidden-md"><a href="#"><span class="fa fa-shopping-cart" style=" display:inline; margin-right:10px;"></span>Compras</a></li>
+                        <li class="hidden-lg hidden-md"><a href="#"><span class="fa fa-money" style=" display:inline; margin-right:10px;"></span>Ventas</a></li>
+                        <li class="hidden-lg hidden-md"><a href="#"><span class="fa fa-keyboard-o" style=" display:inline; margin-right:10px;"></span>Carga de datos</a></li>
+                        <li class="hidden-lg hidden-md"><a href="#"><span class="fa fa-usd" style=" display:inline; margin-right:10px;"></span>Listas de precios</a></li>
+                        <li class="hidden-lg hidden-md"><a href="#"><span class="fa fa-bar-chart" style=" display:inline; margin-right:10px;"></span>Balances</a></li>
+                        <li class="hidden-lg hidden-md"><a href="#"><span class="fa fa-pie-chart" style=" display:inline; margin-right:10px;"></span>Stock</a></li>
+                    </ul>
+                    <a class="hidden-xs hidden-sm" href="cerrarSesion"><i class="navbar-right fa fa-power-off" style=" color:white; margin:10px; padding-top:10px;"></i></a>
+                    <ul class="nav navbar-nav navbar-right" style=" margin-right:20px ">          
+                        <li class="dropdown">           
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#" style=""> Administrador <b class="caret"></b></a>
+                            <ul role="menu" class="dropdown-menu">
+                                <li><a href="#">Inbox</a></li>
+                                <li><a href="#">Drafts</a></li>
+                                <li><a href="#">Sent Items</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Trash</a></li>
+                            </ul>
+                        </li>
+                    </ul>            
+                    <img class="img-circle navbar-right hidden-xs hidden-sm" src="imagenes/admin2.png" style=" width:4% ; "/>
+                </div>
+            </div>
+        </nav>
+        <div class="col-lg-2 col-md-2 hidden-xs hidden-sm" style=" background-color:white; margin:0px;padding:0px; padding-top:35px; height:1517px; border-right:2px inset rgba(227,227,227,1.00);">
+            <div class="col-lg-5 col-md-5" style="margin-left:0px;">
+                <img class="img-thumbnail" src="imagenes/admin2.png" style=" width:100%"/>
+            </div>
+            <div class="col-lg-7 col-md-7" style="margin-right:0px;">
+                <b>Administrador</b>
+                <br/>
+                <small><i class="fa fa-circle" style=" color: rgba(92,184,8,1.00); margin-right:10px; "></i>Online</small>
+            </div>
+            <div class="col-lg-12 col-md-12" style="margin:0px; padding:0px; margin-top:25px">
+                <small style="color:rgba(216,216,216,1.00); margin-left:10px; padding-bottom:25px;">Menu</small>
+                <ul  class="menuLateral nav nav-pills nav-stacked" style=" margin:0px;">
+                    <li class="activo"><a href="#" ><span class="glyphicon glyphicon-home" style=" display:inline; margin-right:10px;"></span><b>  Home</b></a></li>
+                    <li><a href="#"><span class="fa fa-shopping-cart" style=" display:inline; margin-right:10px;"></span>Compras</a></li>
+                    <li><a href="#"><span class="fa fa-money" style=" display:inline; margin-right:10px;"></span>Ventas</a></li>
+                    <li><a href="#"><span class="fa fa-keyboard-o" style=" display:inline; margin-right:10px;"></span>Carga de datos</a></li>
+                </ul>
+                <div style="border-top:2px inset rgba(227,227,227,.20); margin-top:5px; padding-top:5px;">
+                    <small style="color:rgba(216,216,216,1.00); margin-left:10px; padding-bottom:25px;">Consultas</small>
+                    <ul  class="menuLateral nav nav-pills nav-stacked" style=" margin:0px;">
+                        <li><a href="#"><span class="fa fa-usd" style=" display:inline; margin-right:10px;"></span>Listas de precios</a></li>
+                        <li><a href="#"><span class="fa fa-bar-chart" style=" display:inline; margin-right:10px;"></span>Balances</a></li>
+                        <li><a href="#"><span class="fa fa-pie-chart" style=" display:inline; margin-right:10px;"></span>Stock</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-10 col-md-10" style=" margin:0px; padding:0px; background-color:rgba(252,252,252,1.00)">
+            <div class="col-lg-12 col-md-12" style=" background-color:rgba(249,249,249,1.00); margin:0px; border-bottom:2px inset rgba(227,227,227,1.00); padding:15px; padding-left:25px; margin-bottom:20px;">
+                <small>Home > <b>Tablero de registros</b></small>
+                <h4 style=" color:rgba(235,57,60,1.00)">Tablero de registros</h1>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" >
+                <div class="widget" style=" background-color:#03a9f4">
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="margin:0px; padding:0px;">
+                        <i class="iconosWidget fa fa-users fa-5x"></i>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="margin:0px; padding:0px; text-align:right; padding-right:5px;">
+                        <b style="color:white;">Clientes</b>
+                        <b style="color:white; font-size:30px; margin:0px">2.000</b>
+                    </div>
+                    <div class="clearfix visible-sm-block"></div>
+                    <div class="clearfix visible-xs-block"></div>
+                    <div class="clearfix visible-lg-block"></div>
+                    <div class="clearfix visible-md-block"></div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" >
+                <div class="widget" style=" background-color:#8bc34a">
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="margin:0px; padding:0px;">
+                        <i class="iconosWidget fa fa-truck fa-5x"></i>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="margin:0px; padding:0px; text-align:right; padding-right:5px;">
+                        <b style="color:white;">Proveedores</b>
+                        <b style="color:white; font-size:30px; margin:0px">1.000</b>
+                    </div>
+                    <div class="clearfix visible-sm-block"></div>
+                    <div class="clearfix visible-xs-block"></div>
+                    <div class="clearfix visible-lg-block"></div>
+                    <div class="clearfix visible-md-block"></div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" >
+                <div class="widget" style=" background-color: #e84e40">
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="margin:0px; padding:0px;">
+                        <i class="iconosWidget fa fa-sign-in fa-5x"></i>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="margin:0px; padding:0px; text-align:right; padding-right:5px;">
+                        <b style="color:white;">Órdenes</b>
+                        <b style="color:white; font-size:30px; margin:0px">$12.00</b>
+                    </div>
+                    <div class="clearfix visible-sm-block"></div>
+                    <div class="clearfix visible-xs-block"></div>
+                    <div class="clearfix visible-lg-block"></div>
+                    <div class="clearfix visible-md-block"></div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" >
+                <div class="widget" style=" background-color: #9c27b0">
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="margin:0px; padding:0px;">
+                        <i class="iconosWidget fa fa-sign-out fa-5x"></i>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="margin:0px; padding:0px; text-align:right;padding-right:5px;">
+                        <b style="color:white;">Pagos</b>
+                        <b style="color:white; font-size:30px; margin:0px">$150.000</b>
+                    </div>
+                    <div class="clearfix visible-sm-block"></div>
+                    <div class="clearfix visible-xs-block"></div>
+                    <div class="clearfix visible-lg-block"></div>
+                    <div class="clearfix visible-md-block"></div>
+                </div>
+            </div>
+            <div class="clearfix visible-sm-block"></div>
+            <div class="clearfix visible-xs-block"></div>
+            <div class="clearfix visible-lg-block"></div>
+            <div class="clearfix visible-md-block"></div>
+
+            <div class="col-lg-12">
+                <div class="main-box clearfix" style=" background-color:white; padding:15px; border:3px solid rgba(227,227,227,.3); margin-bottom:20px; margin-top:20px;">
+                    <header class="main-box-header clearfix">
+                        <h2 class="pull-left">Últimos Pedidos</h2>
+                    </header>
+                    <div class="col-lg-6" style="padding:10px;">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                            <input type="text" class="form-control" placeholder="Buscar...">
+                        </div>
+                    </div>
+                    <div class="col-lg-6" style="padding:10px; margin-bottom:30px;">
+                        <a href="#" class="btn btn-danger pull-right">
+                            <i class="fa fa-eye fa-lg"></i> Ver todos los pedidos
+                        </a>
+                    </div>
+
+
+
+
+                    <div class="main-box-body clearfix">
+                        <div class="table-responsive clearfix">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th><a href="#"><span>Order ID</span></a></th>
+                                        <th><a href="#" class="desc"><span>Date</span></a></th>
+                                        <th><a href="#" class="asc"><span>Customer</span></a></th>
+                                        <th class="text-center"><span>Status</span></th>
+                                        <th class="text-right"><span>Price</span></th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <a href="#">#8002</a>
+                                        </td>
+                                        <td>
+                                            2013/08/08
+                                        </td>
+                                        <td>
+                                            <a href="#">Robert De Niro</a>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="label label-success">Completed</span>
+                                        </td>
+                                        <td class="text-right">
+                                            &dollar; 825.50
+                                        </td>
+                                        <td class="text-center" style="width: 15%;">
+                                            <a href="#" class="table-link">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="#">#5832</a>
+                                        </td>
+                                        <td>
+                                            2013/08/08
+                                        </td>
+                                        <td>
+                                            <a href="#">John Wayne</a>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="label label-warning">On hold</span>
+                                        </td>
+                                        <td class="text-right">
+                                            &dollar; 923.93
+                                        </td>
+                                        <td class="text-center" style="width: 15%;">
+                                            <a href="#" class="table-link">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="#">#2547</a>
+                                        </td>
+                                        <td>
+                                            2013/08/08
+                                        </td>
+                                        <td>
+                                            <a href="#">Anthony Hopkins</a>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="label label-info">Pending</span>
+                                        </td>
+                                        <td class="text-right">
+                                            &dollar; 1.625.50
+                                        </td>
+                                        <td class="text-center" style="width: 15%;">
+                                            <a href="#" class="table-link">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="#">#9274</a>
+                                        </td>
+                                        <td>
+                                            2013/08/08
+                                        </td>
+                                        <td>
+                                            <a href="#">Charles Chaplin</a>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="label label-danger">Cancelled</span>
+                                        </td>
+                                        <td class="text-right">
+                                            &dollar; 35.34
+                                        </td>
+                                        <td class="text-center" style="width: 15%;">
+                                            <a href="#" class="table-link">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="#">#8463</a>
+                                        </td>
+                                        <td>
+                                            2013/08/08
+                                        </td>
+                                        <td>
+                                            <a href="#">Gary Cooper</a>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="label label-success">Completed</span>
+                                        </td>
+                                        <td class="text-right">
+                                            &dollar; 34.199.99
+                                        </td>
+                                        <td class="text-center" style="width: 15%;">
+                                            <a href="#" class="table-link">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 column" style=" margin-bottom: 20px;">
+                <div style=" padding:20px; background: white;border:3px solid rgba(227,227,227,.3);">
+                    <h4>Ventas</h4>
+                    <div style="  background-color:white;">
+                        <!--<h3 style=" padding-left:20px;"><i>Historial de consumos</i></h3>
+                        <hr>
+                        <p>Se muestran las recargas realizadas mensualmente durante el transcurso del año actual. Se realiza una comparación de las recargas mensuales del año actual vs. las recargas mensuales del año anterior. </p>
+                        <p>Leyenda:</p>
+                        <i class="fa fa-stop fa-2x" style="color: rgba(220,220,220,1);"></i><p style="display: inline;"> Año anterior</p><br/>
+                        <i class="fa fa-stop fa-2x" style="color:rgba(151,187,205,1) "></i><p style="display: inline;"> Año actual</p>
+                        <br/><br/>-->
+                        <canvas id="canvas" height="100" style=""></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7 column" style=" margin-bottom: 20px; ">
+                <div style="border:1px solid rgba(227,227,227,.3); background-color:#e84e40; padding:10px; border-radius:5px; margin:0px; padding:0px;">
+                    <h4 style=" color:white; padding:10px; display:inline-block">Mes:</h4><big id="mes" style="color:white; display:inline; padding:10px;"></big>
+                    <div style=" background-color: white; text-align:center">
+                        <div class="col-md-4 column" style=" text-align:center;">
+                            <div id="fechaCirculo" class="personas chart" data-percent="0" style=" max-width:150px;">
+                                <span class="percent"></span>
+                                <p>Mes completado</p>
+                            </div>
+                        </div>
+                        <div class="col-md-8 column" style=" text-align:left; padding:20px; ">
+                            <b>Fecha</b><p id="fechaTexto" style=" display:inline;padding-left:15px"></p>
+                            <br/><br/>
+                            <b>Usuario:</b><p style=" display:inline; padding-left:15px;">Administrador</p>
+                            <br/>
+                            <b>Nombre:</b><p style=" display:inline; padding-left:15px;">Alex</p>
+                            <br/>
+                            <b>Última conexión:</b><p style=" display:inline; padding-left:15px;">11/08/2014 10:34</p>
+                            <div class="col-md-12 column">
+                                <button type="button" class="btn btn-danger btn-block">Cambiar Contraseña</button>
+                            </div>
+
+
+                        </div>
+                        <div class="clearfix visible-sm-block"></div>
+                        <div class="clearfix visible-xs-block"></div>
+                        <div class="clearfix visible-lg-block"></div>
+                        <div class="clearfix visible-md-block"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 column" style=" margin-bottom: 20px; "> 
+                <div id="weather"></div>
+            </div>
+        </div>
+        <div class="clearfix visible-sm-block"></div>
+        <div class="clearfix visible-xs-block"></div>
+        <div class="clearfix visible-lg-block"></div>
+        <div class="clearfix visible-md-block"></div>
+        <div class="col-md-12 column" style=" background-color:white; text-align:center; padding:20px;border:3px solid rgba(227,227,227,.3); "> 
+            <img src="imagenes/glove.png" style=" width:4%;">
+            <small>Desarrollado por Glove</small>
+
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/Chart.js"></script>
+        <script src="js/jquery.simpleWeather.js"></script>
+        <script type="text/javascript" src="js/easypiechart.js"></script>
+        <script type="text/javascript" src="js/jquery.easypiechart.js"></script>
+        <script>
+            window.onload = function () {
+                var ctx = document.getElementById("canvas").getContext("2d");
+                window.myLine = new Chart(ctx).Line(lineChartData, {
+                    responsive: true
+                });
+            }
+
+
+            var lineChartData = {
+                labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                datasets: [
+                    {
+                        label: "Año actual",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: [100, 83, 54]
+                    },
+                    {
+                        label: "Año anterior",
+                        fillColor: "rgba(151,187,205,0.2)",
+                        strokeColor: "rgba(151,187,205,1)",
+                        pointColor: "rgba(151,187,205,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(151,187,205,1)",
+                        data: [34, 567, 87]
+                    }
+                ]
+            }
+            // Docs at http://simpleweatherjs.com
+
+            /* Does your browser support geolocation? */
+            if ("geolocation" in navigator) {
+                $('.js-geolocation').show();
+            } else {
+                $('.js-geolocation').hide();
+            }
+
+            /* Where in the world are you? */
+            $('.js-geolocation').on('click', function () {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    loadWeather(position.coords.latitude + ',' + position.coords.longitude); //load weather using your lat/lng coordinates
+                });
+            });
+
+            /* 
+             * Test Locations
+             * Austin lat/long: 30.2676,-97.74298
+             * Austin WOEID: 2357536
+             */
+            $(document).ready(function () {
+                loadWeather('Rosario,Argentina', ''); //@params location, woeid
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    loadWeather(position.coords.latitude + ',' + position.coords.longitude); //load weather using your lat/lng coordinates
+                })
+            });
+
+            function loadWeather(location, woeid) {
+                $.simpleWeather({
+                    location: location,
+                    woeid: woeid,
+                    unit: 'c',
+                    success: function (weather) {
+                        html = '<h2><i class="icon-' + weather.code + '"></i> ' + weather.temp + '&deg;' + weather.units.temp + '</h2>';
+                        html += '<ul><li>' + weather.city + ', ' + weather.region + '</li>';
+                        //html += '<li class="currently">'+weather.currently+'</li>';
+                        //html += '<li>'+weather.alt.temp+'&deg;C</li></ul>';  
+
+                        $("#weather").html(html);
+                    },
+                    error: function (error) {
+                        $("#weather").html('<p>' + error + '</p>');
+                    }
+                });
+            }
+            $('.personas').easyPieChart({
+                //easing: 'easeOutCirc',
+                barColor: '#e84e40',
+                //trackColor: 'white',
+                //scaleColor:false,
+                scaleLength: 10,
+                percent: 67,
+                lineCap: 'round',
+                lineWidth: 8, //12
+                size: 150, //110
+                animate: {duration: 4000, enabled: true},
+                onStep: function (from, to, percent) {
+                    $(this.el).find('.percent').text(Math.round(percent));
+                }
+            });
+            $(document).ready(function () {
+                var f = new Date();
+                var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+                fecha = new Date(f.getFullYear(), f.getMonth() + 1, 0);
+                $("#fechaFinMes").html(fecha.getDate() + " de " + meses[fecha.getMonth()] + " de " + fecha.getFullYear());
+
+                $("#fechaPrincipioMes").html("1" + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
+                $('.personas').data('easyPieChart').update(f.getDate() * 100 / fecha.getDate());
+                $("#fechaTexto").html(f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear());
+                $("#mes").html(meses[f.getMonth()]);
+
+
+            });
+        </script>
+    </body>
+</html>

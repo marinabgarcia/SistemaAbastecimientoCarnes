@@ -1,0 +1,11 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div class="clearfix visible-sm-block"></div>
+        <div class="clearfix visible-xs-block"></div>
+        <div class="clearfix visible-lg-block"></div>
+        <div class="clearfix visible-md-block"></div>
+        <div id="pieDePagina" class="col-md-12 column" style=" background-color:white; text-align:center; padding:20px;border:3px solid rgba(227,227,227,.3); "> 
+            <img src="imagenes/glove.png" style=" width:4%;">
+            <small>Desarrollado por Glove</small>
+
+        </div>

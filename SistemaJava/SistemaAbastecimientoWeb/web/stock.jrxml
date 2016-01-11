@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="stock" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="acffd8d3-bd86-4c9a-9860-1aa8b18b87f8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecha_inis" class="java.util.Date"/>
+	<parameter name="fecha_fins" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT
+     articulo.`idArticulo` AS articulo_idArticulo,
+     articulo.`descripcionArticulo` AS articulo_descripcionArticulo,
+     articulo.`stockUnidad` AS articulo_stockUnidad,
+     articulo.`estadoArticulo` AS articulo_estadoArticulo,
+     articulo.`pesoEstimadoArticulo` AS articulo_pesoEstimadoArticulo,
+     articulo.`idCalidad` AS articulo_idCalidad,
+     preciosventa.`idArticulo` AS preciosventa_idArticulo,
+     preciosventa.`fechaDesde` AS preciosventa_fechaDesde,
+     preciosventa.`fechaHasta` AS preciosventa_fechaHasta,
+     preciosventa.`idTipoCliente` AS preciosventa_idTipoCliente,
+     preciosventa.`montoPrecioVenta` AS preciosventa_montoPrecioVenta ,
+    ( preciosventa.`montoPrecioVenta`* articulo.`stockUnidad`* articulo.`pesoEstimadoArticulo`) AS articulo
+FROM
+     `articulo` articulo INNER JOIN `preciosventa` preciosventa ON articulo.`idArticulo` = preciosventa.`idArticulo`]]>
+	</queryString>
+	<field name="articulo_idArticulo" class="java.lang.Integer"/>
+	<field name="articulo_descripcionArticulo" class="java.lang.String"/>
+	<field name="articulo_stockUnidad" class="java.lang.Long"/>
+	<field name="articulo_estadoArticulo" class="java.lang.String"/>
+	<field name="articulo_pesoEstimadoArticulo" class="java.lang.Double"/>
+	<field name="articulo_idCalidad" class="java.lang.Integer"/>
+	<field name="preciosventa_idArticulo" class="java.lang.Integer"/>
+	<field name="preciosventa_fechaDesde" class="java.sql.Date"/>
+	<field name="preciosventa_fechaHasta" class="java.sql.Date"/>
+	<field name="preciosventa_idTipoCliente" class="java.lang.Integer"/>
+	<field name="preciosventa_montoPrecioVenta" class="java.lang.Double"/>
+	<field name="articulo" class="java.lang.Double"/>
+	<variable name="Articulo" class="java.lang.String">
+		<variableExpression><![CDATA[$F{articulo_stockUnidad}*$F{articulo_pesoEstimadoArticulo}*$F{preciosventa_montoPrecioVenta}]]></variableExpression>
+	</variable>
+	<variable name="stock" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{articulo}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnFooter>
+		<band height="87" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2d548758-a451-4d73-ad39-9aef6974df47" x="0" y="20" width="124" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Mercaderia en Stock]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement uuid="18681c3c-e998-43a6-8678-2df016c0089b" x="365" y="20" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{stock}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="68ee8ed0-79c8-450c-94d7-929a3bbfdf0a" x="124" y="39" width="241" height="1"/>
+			</line>
+		</band>
+	</columnFooter>
+</jasperReport>

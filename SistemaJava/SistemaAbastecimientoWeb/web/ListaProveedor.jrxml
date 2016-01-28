@@ -206,7 +206,7 @@ proveedor.`cuitProveedor`=$P{cuit}
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{calidad_descripcionCalidad}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="¤ #,##0.00">
 				<reportElement uuid="e1c921c3-601b-49ea-86de-c70a3a71c5c3" x="450" y="0" width="105" height="20"/>
 				<textElement textAlignment="Justified"/>
 				<textFieldExpression><![CDATA[$F{precioscompra_montoPrecioCompra}]]></textFieldExpression>

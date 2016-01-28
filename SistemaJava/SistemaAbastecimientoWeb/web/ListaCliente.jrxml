@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1afa939c-f5e3-4478-90f8-882c4cbd1299">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="185"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
@@ -142,7 +142,7 @@ WHERE
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{articulo_descripcionArticulo}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" pattern="¤ #,##0.00">
 				<reportElement uuid="9f1faefc-6ba0-4462-b006-ea3426035bac" style="Detail" x="414" y="0" width="138" height="15"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{preciosventa_montoPrecioVenta}]]></textFieldExpression>

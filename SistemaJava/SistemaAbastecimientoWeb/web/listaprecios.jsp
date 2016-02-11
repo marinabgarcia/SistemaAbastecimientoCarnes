@@ -144,6 +144,7 @@
                     }
                 %>
                 <!--FIN-->
+                 <form id='imprimir' method='post' action="ImprimirLista">
                 <div class="col-md-12col-sm-12 col-xs-12 col-lg-12 column" style="">
                     <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6 column" style="">
                         <div class="form-group">
@@ -156,6 +157,7 @@
                                 </select>
                             </div>
                         </div> 
+                         <button type="button" class="btn btn-info btn-block" data-dismiss="alert" onClick="OnImprimirClick()" aria-hidden="true" style=" height: 100px; width: 110px; margin-left: 0px;"><span class="fa fa-print fa-3x" style=" color: white; display: block;"></span>Imprimir Lista</button>
                     </div>
                     <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6 column" style="">
                         <div id="divProveedor" class="form-group">
@@ -175,8 +177,13 @@
                                 </select>
                             </div>
                         </div> 
+                       
+                           
+                        
+                       
                     </div>
                 </div>
+                     </form>
                 <div id="divRestablecer" class="col-md-12 column col-sm-12 col-xs-12 col-lg-12 column" style="padding: 20px; display: none;">
                     <div class="col-md-9 column col-sm-12 col-xs-12 col-lg-9 column" style=" margin-top:15px;">
                         <div class="progress progress-striped active">
@@ -525,6 +532,14 @@
 
 
                                 };
+                                function  OnImprimirClick()
+                                {
+                                    //aca agarrar los datos adecuados  y hacer submit
+                                    //var datos = $('#grid3').bootgrid().data('.rs.jquery.bootgrid').currentRows;
+                                   // document.getElementById("cuit").value = datos[0].idVentaS;
+                                   // document.getElementById("tipoCliente").value = 2;
+                                    document.getElementById("imprimir").submit();
+                                }
                                 function cargarTablaPrecios()
                                 {
                                     var data = [];

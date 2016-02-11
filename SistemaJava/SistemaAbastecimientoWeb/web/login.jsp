@@ -46,19 +46,55 @@
                     <%
                         }
                     %>
-
+ <%
+                    if (request.getAttribute("correcto") != null) {
+                %>
+                <p style="color:green;"><span>                      
+                        <%
+                            out.println(request.getAttribute("correcto"));
+                            request.setAttribute("correcto", "");
+                        %>
+                    </span></p>
+                    <%
+                        }
+                    %>
                 <input id="loginDni" type="text" name="loginDni" autocomplete="false" class="username" placeholder="DNI" style="color: #ffffff;">
                 <input id="loginContra" type="password" name="loginContra" class="password" placeholder="Contraseña">
                 <button id="loginBtn" type="submit">Entrar al Sistema</button>
+             
 
                 <div class="error"><span>
                     </span>
                 </div>
             </form>
+                    <br>
+                    <br>
+                    <br>
+                    <form>
+                        <div class="container-fluid">
+                            <div class="row">
+                                    <div class="col-md-4">
+                                    </div>
+                                    <div class="col-md-4">
 
+                                        <button type="button" onclick="onCambiarClaveClick()" class="btn btn-block btn-link" style="color:#fff">
+                                                    Cambiar Contraseña
+                                            </button>
+                                    </div>
+                                    <div class="col-md-4">
+                                    </div>
+                            </div>
+                    </div>
+                    </form>
         </div>
 
-
+                    <script>
+                        function onCambiarClaveClick() {
+                            document.location.href='cambioClave.jsp';
+                        };
+                    </script>
+                    
+                    
 
     </body>
 

@@ -83,8 +83,8 @@
                                 <th data-column-id="idArticulo" data-type="numeric" data-sortable="true">Id Artículo</th>
                                 <th data-column-id="descripcionArticulo" data-type="string" data-order="asc" data-sortable="true">Descripción</th>
                                 <th data-column-id="descripcionCalidad" data-formatter="tipo" data-sortable="true">Calidad</th>
-                                <th data-column-id="stockUnidad" data-formatter="stock" data-sortable="true">Stock</th>
-                                <th data-column-id="pesoEstimadoArticulo" data-type="string" data-sortable="false">Peso Estimado</th>
+                                <th data-column-id="stockPeso" data-formatter="stock" data-sortable="true">Stock</th>
+                               <!-- <th data-column-id="pesoEstimadoArticulo" data-type="string" data-sortable="false">Peso Estimado</th>-->
                                 <!--<th data-column-id="estadoArticulo" data-formatter="quantity" data-sortable="true">Estado</th>-->
 
                             </tr>
@@ -131,7 +131,7 @@
                                         "stock"
                                                 : function (column, row)
                                                 {
-                                                    return "<span class=\"stock\">" + row.stockUnidad + "</span>";
+                                                    return "<span class=\"stock\">" + row.stockPeso + " kg </span>";
                                                 }
                                     }
                                 }).on("loaded.rs.jquery.bootgrid", function (e)
@@ -166,7 +166,7 @@
                                     var stock2 = document.getElementsByTagName('tr');
                                     for (var i = 0; i < datos.length; i++)
                                     {
-                                        if (datos[i].stockUnidad <= 0)
+                                        if (datos[i].stockPeso <= 0)
                                         {
                                             
                                                 $(stock.item(i)).addClass("label label-danger masgrande");

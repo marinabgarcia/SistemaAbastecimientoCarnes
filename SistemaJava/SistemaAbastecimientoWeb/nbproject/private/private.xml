@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Marina/Desktop/Glove/Sistema%20Abastecedor%20de%20Carne/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/src/java/FuncionalidadAdicional/cargarGraficoVentasAnuales.java</file>
-            <file>file:/C:/Users/Marina/Desktop/Glove/Sistema%20Abastecedor%20de%20Carne/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/src/java/config.xml</file>
-            <file>file:/C:/Users/Marina/Desktop/Glove/Sistema%20Abastecedor%20de%20Carne/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/src/java/Servlets/cargarTablaArticulos.java</file>
-            <file>file:/C:/Users/Marina/Desktop/Glove/Sistema%20Abastecedor%20de%20Carne/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/web/compra.jsp</file>
-            <file>file:/C:/Users/Marina/Desktop/Glove/Sistema%20Abastecedor%20de%20Carne/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/src/java/Servlets/cargarTablaClientesB.java</file>
+            <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/web/venta.jsp</file>
+            <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/src/java/Servlets/compra.java</file>
+            <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/src/java/FuncionalidadAdicional/recuperarDatosArticulo.java</file>
+            <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/web/compra.jsp</file>
         </group>
     </open-files>
 </project-private>

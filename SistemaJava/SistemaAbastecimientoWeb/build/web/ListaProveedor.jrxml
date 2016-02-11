@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="55bb0c01-8dbc-41c3-8825-ac1d6758ef71">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="cuit" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     calidad.`idCalidad` AS calidad_idCalidad,
+     calidad.`descripcionCalidad` AS calidad_descripcionCalidad,
+     articulo.`idArticulo` AS articulo_idArticulo,
+     articulo.`descripcionArticulo` AS articulo_descripcionArticulo,
+     articulo.`stockUnidad` AS articulo_stockUnidad,
+     articulo.`estadoArticulo` AS articulo_estadoArticulo,
+     articulo.`pesoEstimadoArticulo` AS articulo_pesoEstimadoArticulo,
+     articulo.`idCalidad` AS articulo_idCalidad,
+     precioscompra.`idArticulo` AS precioscompra_idArticulo,
+     precioscompra.`fechaDesde` AS precioscompra_fechaDesde,
+     precioscompra.`fechaHasta` AS precioscompra_fechaHasta,
+     precioscompra.`cuitProveedor` AS precioscompra_cuitProveedor,
+     precioscompra.`montoPrecioCompra` AS precioscompra_montoPrecioCompra,
+     proveedor.`cuitProveedor` AS proveedor_cuitProveedor,
+     proveedor.`nombreProveedor` AS proveedor_nombreProveedor,
+     proveedor.`apellidoProveedor` AS proveedor_apellidoProveedor,
+     proveedor.`direccionProveedor` AS proveedor_direccionProveedor,
+     proveedor.`localidadProveedor` AS proveedor_localidadProveedor,
+     proveedor.`provinciaProveedor` AS proveedor_provinciaProveedor,
+     proveedor.`telefonoProveedor` AS proveedor_telefonoProveedor,
+     proveedor.`celularProveedor` AS proveedor_celularProveedor,
+     proveedor.`emailProveedor` AS proveedor_emailProveedor,
+     proveedor.`estadoProveedor` AS proveedor_estadoProveedor,
+     proveedor.`cuentaCorrienteProveedor` AS proveedor_cuentaCorrienteProveedor
+FROM
+     `calidad` calidad INNER JOIN `articulo` articulo ON calidad.`idCalidad` = articulo.`idCalidad`
+     INNER JOIN `precioscompra` precioscompra ON articulo.`idArticulo` = precioscompra.`idArticulo`
+     LEFT JOIN `proveedor` proveedor ON  proveedor.`cuitProveedor` =precioscompra.`cuitProveedor`
+WHERE
+proveedor.`cuitProveedor`=$P{cuit}
+ and precioscompra.`fechaHasta` IS null]]>
+	</queryString>
+	<field name="calidad_idCalidad" class="java.lang.Integer"/>
+	<field name="calidad_descripcionCalidad" class="java.lang.String"/>
+	<field name="articulo_idArticulo" class="java.lang.Integer"/>
+	<field name="articulo_descripcionArticulo" class="java.lang.String"/>
+	<field name="articulo_stockUnidad" class="java.lang.Long"/>
+	<field name="articulo_estadoArticulo" class="java.lang.String"/>
+	<field name="articulo_pesoEstimadoArticulo" class="java.lang.Double"/>
+	<field name="articulo_idCalidad" class="java.lang.Integer"/>
+	<field name="precioscompra_idArticulo" class="java.lang.Integer"/>
+	<field name="precioscompra_fechaDesde" class="java.sql.Date"/>
+	<field name="precioscompra_fechaHasta" class="java.sql.Date"/>
+	<field name="precioscompra_cuitProveedor" class="java.lang.Long"/>
+	<field name="precioscompra_montoPrecioCompra" class="java.lang.Double"/>
+	<field name="proveedor_cuitProveedor" class="java.lang.Long"/>
+	<field name="proveedor_nombreProveedor" class="java.lang.String"/>
+	<field name="proveedor_apellidoProveedor" class="java.lang.String"/>
+	<field name="proveedor_direccionProveedor" class="java.lang.String"/>
+	<field name="proveedor_localidadProveedor" class="java.lang.Integer"/>
+	<field name="proveedor_provinciaProveedor" class="java.lang.Integer"/>
+	<field name="proveedor_telefonoProveedor" class="java.lang.String"/>
+	<field name="proveedor_celularProveedor" class="java.lang.String"/>
+	<field name="proveedor_emailProveedor" class="java.lang.String"/>
+	<field name="proveedor_estadoProveedor" class="java.lang.String"/>
+	<field name="proveedor_cuentaCorrienteProveedor" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<image>
+				<reportElement uuid="322fb299-ee78-4864-b332-4e2eb05c2485" x="10" y="0" width="120" height="79"/>
+				<imageExpression><![CDATA["C:\\Users\\FlO\\SistemaAbastecimientoCarnes\\SistemaAbastecimientoCarnes\\Bocetos interfaz\\imagenes\\logo_estancia.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="0c9419ae-0c1f-48d8-93aa-676477e97577" x="165" y="27" width="285" height="52"/>
+				<textElement>
+					<font fontName="Arial" size="24"/>
+				</textElement>
+				<text><![CDATA[Lista de precio (compra)]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="db5c3f89-124a-4f74-8750-b1acf766587d" x="418" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="59" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="0c9419ae-0c1f-48d8-93aa-676477e97577" x="0" y="0" width="81" height="20"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cuil Proveedor:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="5b85faf6-b554-4181-9784-efbced25eb86" x="81" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{precioscompra_cuitProveedor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="0c9419ae-0c1f-48d8-93aa-676477e97577" x="0" y="20" width="81" height="20"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tel Proveedor:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="359c93ff-b8f7-439c-ac23-9658ee360277" x="81" y="20" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{proveedor_telefonoProveedor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="0c9419ae-0c1f-48d8-93aa-676477e97577" x="181" y="0" width="103" height="20"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre Proveedor:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="577453cf-db2c-44ae-8ca2-80e98f5c5ae4" x="284" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{proveedor_nombreProveedor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="537d650d-938e-41b1-b762-577caa039887" x="384" y="0" width="96" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{proveedor_apellidoProveedor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="41f0530c-8bf9-4ac6-895d-a66c5c42e254" x="262" y="20" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{proveedor_emailProveedor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="0c9419ae-0c1f-48d8-93aa-676477e97577" x="181" y="20" width="81" height="20"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mail Proveedor:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="2b30413c-3636-48cd-b088-7d6a6244bd25" x="455" y="20" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{proveedor_celularProveedor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="0c9419ae-0c1f-48d8-93aa-676477e97577" x="374" y="20" width="81" height="20"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cel Proveedor:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="6f3dd43d-39fe-4a59-938c-926072388bee" x="100" y="11" width="196" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0c9419ae-0c1f-48d8-93aa-676477e97577" x="296" y="11" width="154" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Calidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a0c3ef31-330e-4d22-baa4-904f440327b3" x="450" y="11" width="105" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6f3dd43d-39fe-4a59-938c-926072388bee" x="0" y="11" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID  Articulo]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="513a8089-8342-4302-99fa-311084ae7f5d" x="0" y="32" width="538" height="1"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement uuid="bf116dfe-b13a-43de-bf75-6c2660b79389" x="10" y="0" width="90" height="20"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$F{articulo_idArticulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="de18cec3-d5a2-4c92-9cd6-3968daa0d07d" x="100" y="0" width="196" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{articulo_descripcionArticulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f14828fe-fa30-4da2-8d4f-ecaff101fdd3" x="296" y="1" width="184" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{calidad_descripcionCalidad}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement uuid="e1c921c3-601b-49ea-86de-c70a3a71c5c3" x="450" y="0" width="105" height="20"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$F{precioscompra_montoPrecioCompra}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement uuid="77c57a4b-3603-42e0-8d02-bbebac8aebdd" x="418" y="19" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="58f111d1-2d50-42f3-b33e-17da61963447" x="498" y="19" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

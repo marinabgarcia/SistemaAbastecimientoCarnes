@@ -20,7 +20,9 @@ public class Articulo {
     //para mostrar en la tabla la descripcion
     private String descripcionCalidad;
     private double montoPrecioCompra; 
+    private double montoPrecioVenta; 
     private int cantidadFraccionada;
+    private double stockPeso;
 
     /**
      * @return the idArticulo
@@ -148,4 +150,34 @@ public class Articulo {
         this.cantidadFraccionada = cantidadFraccionada;
     }
 
+    /**
+     * @return the stockPeso
+     */
+    public double getStockPeso() {
+        return stockPeso;
+    }
+
+    /**
+     * @param stockPeso the stockPeso to set
+     */
+    public void setStockPeso(double stockPeso) {
+        this.stockPeso = stockPeso;
+    }
+
+    /**
+     * @return the montoPrecioVenta
+     */
+    public double getMontoPrecioVenta() {
+        return montoPrecioVenta;
+    }
+
+    /**
+     * @param montoPrecioVenta the montoPrecioVenta to set
+     */
+    public void setMontoPrecioVenta(double montoPrecioVenta) {
+        this.montoPrecioVenta = montoPrecioVenta;
+    }
+
+    
+    
 }

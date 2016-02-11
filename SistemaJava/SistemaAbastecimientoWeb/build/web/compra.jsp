@@ -246,42 +246,42 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4 column" style="">
+                                            <div class="col-md-8 column" style="">
                                                 <div class="form-group">
                                                     <label for="apellido" style=" font-size: 15px;">Descripcion:</label>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class=" fa fa-pencil"></span></span>
-                                                        <input type="text" required readonly class="form-control" id="descripcionArticulo" name="descripcionArticulo"/>
+                                                        <input type="text" required readonly tabindex="-1" class="form-control" id="descripcionArticulo" name="descripcionArticulo"/>
 
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 column" style="">
-                                                <div class="form-group">
-                                                    <label for="apellido" style=" font-size: 15px;">Calidad:</label>
-                                                    <div class="input-group">  
-                                                        <span class="input-group-addon"><span class=" fa fa-star"></span></span>                                                         
-                                                        <input type="text" readonly class="form-control" id="calidadArticulo" name="calidadArticulo"/>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 column" style="">
-                                                <div class="form-group">
-                                                    <label for="apellido" style=" font-size: 15px;">Cantidad en unidades:</label>
-                                                    <div class="input-group">
-
-                                                        <input type="number" min="1" required class="form-control" id="cantidadLineaCompra" name="cantidadLineaCompra"/>
-                                                        <span class="input-group-addon">u</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 column" style="">
                                                 <div class="form-group">
                                                     <label for="apellido" style=" font-size: 15px;">Peso:</label>
                                                     <div class="input-group">                                                           
                                                         <input required type="number" min="0" step='any' class="form-control" id="pesoLineaCompra" name="pesoLineaCompra"/>
                                                         <span class="input-group-addon">kg</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 column" style="">
+                                                <div class="form-group">
+                                                    <label for="apellido" style=" font-size: 15px;">Calidad:</label>
+                                                    <div class="input-group">  
+                                                        <span class="input-group-addon"><span class=" fa fa-star"></span></span>                                                         
+                                                        <input type="text" readonly tabindex="-1" class="form-control" id="calidadArticulo" name="calidadArticulo"/>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 column" style="display: none">
+                                                <div class="form-group">
+                                                    <label for="apellido" style=" font-size: 15px;">Cantidad en unidades:</label>
+                                                    <div class="input-group">
+
+                                                        <input type="number" value="0" class="form-control" id="cantidadLineaCompra" name="cantidadLineaCompra"/>
+                                                        <span class="input-group-addon">u</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -310,14 +310,14 @@
                                                             <th data-column-id="descripcionArticulo" >Descripcion</th>
                                                             <th data-column-id="descripcionCalidad" >Calidad</th>
                                                             <th id="precioCompra" data-column-id="precioCompra" data-formatter="precio">Precio kg</th>
-                                                            <th data-column-id="cantidadLineaCompra" data-formatter="unidad" data-header-css-class="commandIdArticulo">Unidades</th>
+                                                            /<!--<th data-column-id="cantidadLineaCompra" data-formatter="unidad" data-header-css-class="commandIdArticulo">Unidades</th>-->
                                                             <th data-column-id="pesoLineaCompra" data-formatter="peso" data-header-css-class="commandIdArticulo">Peso</th>
                                                             <th data-column-id="precioLineaCompra" data-formatter="precioLinea">Total</th>
                                                             <th data-column-id="observacionLineaCompra" data-visible="false">Observacion</th>
                                                             <th data-column-id="commands" data-formatter="commands" class="comando" data-sortable="false" style="" data-header-css-class="commandColumn"></th>
                                                             <th data-column-id="idLineaCompraS" data-visible="false">idLineaCompra</th>
                                                             <th data-column-id="cantidadFraccionada" data-visible="false">Cantidad Fraccionada</th>
-                                                            <th data-column-id="idFraccionamiento">Fraccionamiento</th>
+                                                            <!--<th data-column-id="idFraccionamiento">Fraccionamiento</th>-->
                                                         </tr>
                                                     </thead>  
                                                 </table>
@@ -1465,7 +1465,7 @@
                 totalCompra = Math.round((totalCompra + precioCompra * pesoLineaCompra) * 100) / 100;
                 document.getElementById('totalCompraCalculado').value = totalCompra;
                 document.getElementById('idArticulo').value = '';
-                document.getElementById('cantidadLineaCompra').value = '';
+                document.getElementById('cantidadLineaCompra').value = '0';
                 document.getElementById('pesoLineaCompra').value = '';
                 document.getElementById('observacionLineaCompra').value = '';
                 document.getElementById("descripcionArticulo").value = '';
@@ -1492,7 +1492,7 @@
                 }
                 $("#grid2").bootgrid('remove', rows);
                 document.getElementById('idArticulo').value = '';
-                document.getElementById('cantidadLineaCompra').value = '';
+                document.getElementById('cantidadLineaCompra').value = '0';
                 document.getElementById('pesoLineaCompra').value = '';
                 document.getElementById('observacionLineaCompra').value = '';
                 document.getElementById("descripcionArticulo").value = '';

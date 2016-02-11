@@ -315,42 +315,42 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4 column" style="">
+                                            <div class="col-md-8 column" style="">
                                                 <div class="form-group">
                                                     <label for="apellido" style=" font-size: 15px;">Descripcion:</label>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class=" fa fa-pencil"></span></span>
-                                                        <input type="text" required readonly class="form-control" id="descripcionArticulo" name="descripcionArticulo"/>
+                                                        <input type="text" required readonly tabindex="-1" class="form-control" id="descripcionArticulo" name="descripcionArticulo"/>
 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 column" style=" display: none">
+                                                <div class="form-group">
+                                                    <label for="apellido" style=" font-size: 15px;">Cantidad en unidades:</label>
+                                                    <div class="input-group">
+
+                                                        <input type="number" value="0" class="form-control" id="cantidadLineaVenta" name="cantidadLineaVenta" onchange="validarStock()"/>
+                                                        <span class="input-group-addon">u</span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 column" style="">
                                                 <div class="form-group">
+                                                    <label for="apellido" style=" font-size: 15px;">Peso Total:</label>
+                                                    <div class="input-group">                                                           
+                                                        <input required type="number" min="0" step='any' class="form-control" id="pesoLineaVenta" name="pesoLineaVenta" onchange="validarStock()"/>
+                                                        <span class="input-group-addon">kg</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 column" style="">
+                                                <div class="form-group">
                                                     <label for="apellido" style=" font-size: 15px;">Calidad:</label>
                                                     <div class="input-group">  
                                                         <span class="input-group-addon"><span class=" fa fa-star"></span></span>                                                         
-                                                        <input type="text" readonly class="form-control" id="calidadArticulo" name="calidadArticulo"/>
+                                                        <input type="text" readonly tabindex="-1" class="form-control" id="calidadArticulo" name="calidadArticulo"/>
 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 column" style="">
-                                                <div class="form-group">
-                                                    <label for="apellido" style=" font-size: 15px;">Cantidad en unidades:</label>
-                                                    <div class="input-group">
-
-                                                        <input type="number" min="1" required class="form-control" id="cantidadLineaVenta" name="cantidadLineaVenta" onchange="validarStock()"/>
-                                                        <span class="input-group-addon">u</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 column" style="">
-                                                <div class="form-group">
-                                                    <label for="apellido" style=" font-size: 15px;">Peso Total:</label>
-                                                    <div class="input-group">                                                           
-                                                        <input required type="number" min="0" step='any' class="form-control" id="pesoLineaVenta" name="pesoLineaVenta"/>
-                                                        <span class="input-group-addon">kg</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -380,7 +380,7 @@
                                                     <th data-column-id="descripcionArticulo" >Descripcion</th>
                                                     <th data-column-id="descripcionCalidad" >Calidad</th>
                                                     <th data-column-id="precioVenta" data-formatter="precio">Precio kg</th>
-                                                    <th data-column-id="cantidadLineaVenta" data-formatter="unidad" data-header-css-class="commandIdArticulo">Unidades</th>
+                                                    <!--<th data-column-id="cantidadLineaVenta" data-formatter="unidad" data-header-css-class="commandIdArticulo">Unidades</th>-->
                                                     <th data-column-id="pesoLineaVenta" data-formatter="peso" data-header-css-class="commandIdArticulo">Peso</th>
                                                     <th data-column-id="precioLineaVenta" data-formatter="precioLinea">Total</th>
                                                     <th data-column-id="observacionLineaVenta" data-visible="false">Observacion</th>
@@ -472,7 +472,7 @@
                                                 <th data-column-id="idArticulo" data-identifier="true" data-header-css-class="commandIdArticulo" data-type="numeric">Id Artículo</th>
                                                 <th data-column-id="descripcionArticulo" data-order="asc">Descripción</th>
                                                 <th data-column-id="descripcionCalidad">Calidad</th>
-                                                <th data-column-id="stockUnidad" data-type="numeric" data-formatter="stock" data-sortable="false">Stock</th>
+                                                <th data-column-id="stockPeso" data-type="numeric" data-formatter="stock" data-sortable="false">Stock</th>
                                                 <th data-column-id="quantity" data-formatter="quantity">Precio</th>
                                                 <th data-column-id="commands" data-formatter="commands" class="comando" data-sortable="false" style="" data-header-css-class="commandColumn"></th>
                                             </tr>
@@ -1281,7 +1281,7 @@
                                                 "stock"
                                                         : function (column, row)
                                                         {
-                                                            return "<span class=\"stock\" name=\"" + row.stockUnidad + "\"> " + row.stockUnidad + "</span>";
+                                                            return "<span class=\"stock\" name=\"" + row.id + "\"> " + row.stockPeso + "</span>";
                                                         }
                                             }
                                         }).on("loaded.rs.jquery.bootgrid", function (e)
@@ -1292,7 +1292,7 @@
                                             var band = 0;
                                             for (var i = 0; i < datos.length; i++)
                                             {
-                                                if (datos[i].stockUnidad <= 0)
+                                                if (datos[i].stockPeso <= 0)
                                                 {
 
                                                     $(vencimientos.item(i)).addClass("label label-danger masgrande");
@@ -1496,7 +1496,7 @@
                 totalCompra = Math.round((totalCompra + precioVenta * pesoLineaVenta) * 100) / 100;
                 document.getElementById('totalVentaCalculado').value = totalCompra;
                 document.getElementById('idArticulo').value = '';
-                document.getElementById('cantidadLineaVenta').value = '';
+                document.getElementById('cantidadLineaVenta').value = '0';
                 document.getElementById('pesoLineaVenta').value = '';
                 document.getElementById('observacionLineaVenta').value = '';
                 document.getElementById("descripcionArticulo").value = '';
@@ -1524,7 +1524,7 @@
                 }
                 $("#grid2").bootgrid('remove', rows);
                 document.getElementById('idArticulo').value = '';
-                document.getElementById('cantidadLineaVenta').value = '';
+                document.getElementById('cantidadLineaVenta').value = '0';
                 document.getElementById('pesoLineaVenta').value = '';
                 document.getElementById('observacionLineaVenta').value = '';
                 document.getElementById("descripcionArticulo").value = '';
@@ -2032,82 +2032,143 @@
                     document.getElementById("alerta").style.display = "inline";
                 }
             }
-
-            function cambiarDescripcion()
+            
+           function cambiarDescripcion()
             {
                 descripcionArticulo = 'null';
                 document.getElementById("descripcionArticulo").value = "";
                 document.getElementById("calidadArticulo").value = "";
-                var datosArticulo = $('#grid').bootgrid().data('.rs.jquery.bootgrid').currentRows;
-                for (var i = 0; i < datosArticulo.length; i++)
-                {
-                    if (datosArticulo[i].idArticulo == document.getElementById("idArticulo").value)
+                $.post("recuperarDatosArticulo", {idArticulo: document.getElementById("idArticulo").value, idTipoCliente: document.getElementById("idTipoCliente").value}, function (rta) {
+                    var datos = rta.split("-");
+                    descripcionArticulo = datos[0];
+                    descripcionCalidad = datos[1];
+                    precioVenta = datos[2];
+                    stockUnidad = datos[3];
+                    if (descripcionArticulo == "null")
                     {
-                        row = datosArticulo[i];
-                    }
-                }
-                if (row.montoPrecioCompra == 0)
-                {
-                    document.getElementById("idArticulo").setCustomValidity("No se tiene registro de precio para este articulo para el tipo de cliente específicado");
-                    descripcionArticulo = '';
-                    precioVenta = 0;
-                    descripcionCalidad = '';
-                }
-                else
-                {
-                    if (row.stockUnidad > 0)
-                    {
-                        document.getElementById("idArticulo").setCustomValidity("");
-                        document.getElementById("descripcionArticulo").value = row.descripcionArticulo;
-                        descripcionArticulo = row.descripcionArticulo;
-                        document.getElementById("calidadArticulo").value = row.descripcionCalidad;
-                        descripcionCalidad = row.descripcionCalidad;
-                        precioVenta = row.montoPrecioCompra;
-                        stockUnidad = row.stockUnidad;
+                        document.getElementById("idArticulo").setCustomValidity("El proveedor no tiene registro de precio para este articulo");
                     }
                     else
+                    {
+                        document.getElementById("idArticulo").setCustomValidity("");
+                        document.getElementById("descripcionArticulo").value = descripcionArticulo;
+                        document.getElementById("calidadArticulo").value = descripcionCalidad;
+                    }
+                    for (var i = 0; i < datosLineasCompra.length; i++)
+                    {
+                        if (datosLineasCompra[i].idArticulo == document.getElementById("idArticulo").value)
+                        {
+                            document.getElementById("idArticulo").setCustomValidity("El articulo ya se registro");
+                            break;
+                        }
+                        else
+                        {
+                            document.getElementById("idArticulo").setCustomValidity("");
+                        }
+
+
+                    }
+                    if (descripcionArticulo == "null")
+                    {
+                        document.getElementById("idArticulo").setCustomValidity("El proveedor no tiene registro de precio para este articulo");
+                    }
+                    
+                    if(stockUnidad<=0)
                     {
                         document.getElementById("idArticulo").setCustomValidity("No hay stock disponible para la venta de este artículo.");
                         descripcionArticulo = '';
                         precioVenta = 0;
                         descripcionCalidad = '';
                     }
-                }
-                for (var i = 0; i < datosLineaVenta.length; i++)
-                {
-                    if (datosLineaVenta[i].idArticulo == document.getElementById("idArticulo").value)
+                    if (precioVenta == 0)
                     {
-                        document.getElementById("idArticulo").setCustomValidity("El articulo ya se registro");
-                        break;
-                    }
-                    else
-                    {
-                        document.getElementById("idArticulo").setCustomValidity("");
+                        document.getElementById("idArticulo").setCustomValidity("No se tiene registro de precio para este articulo para el tipo de cliente específicado");
+                        descripcionArticulo = '';
+                        precioVenta = 0;
+                        descripcionCalidad = '';
                     }
 
-
-                }
-                if (row.montoPrecioCompra == 0)
-                {
-                    document.getElementById("idArticulo").setCustomValidity("No se tiene registro de precio para este articulo para el tipo de cliente específicado");
-                }
-                if (row.stockUnidad <= 0)
-                {
-                    document.getElementById("idArticulo").setCustomValidity("No hay stock disponible para la venta de este artículo.");
-                }
-
-
+                });
             }
+
+//            function cambiarDescripcion()
+//            {
+//                row=null;
+//                descripcionArticulo = 'null';
+//                document.getElementById("descripcionArticulo").value = "";
+//                document.getElementById("calidadArticulo").value = "";
+//                var datosArticulo = $('#grid').bootgrid().data('.rs.jquery.bootgrid').currentRows;
+//                for (var i = 0; i < datosArticulo.length; i++)
+//                {
+//                    if (datosArticulo[i].idArticulo == document.getElementById("idArticulo").value)
+//                    {
+//                        row = datosArticulo[i];
+//                    }
+//                }
+//                if (row.montoPrecioCompra == 0)
+//                {
+//                    document.getElementById("idArticulo").setCustomValidity("No se tiene registro de precio para este articulo para el tipo de cliente específicado");
+//                    descripcionArticulo = '';
+//                    precioVenta = 0;
+//                    descripcionCalidad = '';
+//                }
+//                else
+//                {
+//                    if (row.stockPeso > 0)
+//                    {
+//                        document.getElementById("idArticulo").setCustomValidity("");
+//                        document.getElementById("descripcionArticulo").value = row.descripcionArticulo;
+//                        descripcionArticulo = row.descripcionArticulo;
+//                        document.getElementById("calidadArticulo").value = row.descripcionCalidad;
+//                        descripcionCalidad = row.descripcionCalidad;
+//                        precioVenta = row.montoPrecioCompra;
+//                        stockUnidad = row.stockPeso;
+//                    }
+//                    else
+//                    {
+//                        document.getElementById("idArticulo").setCustomValidity("No hay stock disponible para la venta de este artículo.");
+//                        descripcionArticulo = '';
+//                        precioVenta = 0;
+//                        descripcionCalidad = '';
+//                    }
+//                }
+//                for (var i = 0; i < datosLineaVenta.length; i++)
+//                {
+//                    if (datosLineaVenta[i].idArticulo == document.getElementById("idArticulo").value)
+//                    {
+//                        document.getElementById("idArticulo").setCustomValidity("El articulo ya se registro");
+//                        break;
+//                    }
+//                    else
+//                    {
+//                        document.getElementById("idArticulo").setCustomValidity("");
+//                    }
+//
+//
+//                }
+//                if (row.montoPrecioCompra == 0)
+//                {
+//                    document.getElementById("idArticulo").setCustomValidity("No se tiene registro de precio para este articulo para el tipo de cliente específicado");
+//                }
+//                if (row.stockPeso <= 0)
+//                {
+//                    document.getElementById("idArticulo").setCustomValidity("No hay stock disponible para la venta de este artículo.");
+//                }
+//                 if (descripcionArticulo == "null")
+//                 {
+//                        document.getElementById("idArticulo").setCustomValidity("El proveedor no tiene registro de precio para este articulo");
+//                 }
+//            }
 
             function validarStock()
             {
-                if (stockUnidad - document.getElementById('cantidadLineaVenta').value < 0)
+                if (stockUnidad - document.getElementById('pesoLineaVenta').value < 0)
                 {
-                    document.getElementById("cantidadLineaVenta").setCustomValidity("No hay stock suficiente para la venta de esta cantidad de artículos.");
+                    document.getElementById("pesoLineaVenta").setCustomValidity("No hay stock suficiente para la venta de esta cantidad de artículos.");
                 }
                 else
                 {
-                    document.getElementById("cantidadLineaVenta").setCustomValidity("");
+                    document.getElementById("pesoLineaVenta").setCustomValidity("");
                 }
 
             }

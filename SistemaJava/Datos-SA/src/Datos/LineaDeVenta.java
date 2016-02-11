@@ -90,17 +90,17 @@ public class LineaDeVenta {
 
                 // execute the preparedstatement
                 preparedStmt.execute();
-                String query2 = "select stockUnidad from articulo where idArticulo=?";
+                String query2 = "select stockPeso from articulo where idArticulo=?";
                 PreparedStatement preparedStmt2 = conexion.prepareStatement(query2);
                 preparedStmt2.setInt(1, listap.getIdArticulo());
                 ResultSet rs = preparedStmt2.executeQuery();
                 preparedStmt2.execute();
                 while (rs.next()) {
-                    int stock = rs.getInt("stockUnidad");
-                    int stockNuevo = stock - listap.getCantidadLineaVenta();
-                    String query3 = "update articulo set stockUnidad=? where idArticulo=?";
+                    double stock = rs.getDouble("stockPeso");
+                    double stockNuevo = Math.round(stock - listap.getPesoLineaVenta());
+                    String query3 = "update articulo set stockPeso=? where idArticulo=?";
                     PreparedStatement preparedStmt3 = conexion.prepareStatement(query3);
-                    preparedStmt3.setInt(1, stockNuevo);
+                    preparedStmt3.setDouble(1, stockNuevo);
                     preparedStmt3.setInt(2, listap.getIdArticulo());
                     preparedStmt3.execute();
 

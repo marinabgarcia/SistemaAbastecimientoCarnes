@@ -339,6 +339,7 @@ public class Articulo {
                 articulo.setIdCalidad(rs.getInt("idCalidad"));
                 articulo.setMontoPrecioCompra(rs.getDouble("montoPrecioVenta"));
                 articulo.setStockUnidad(rs.getInt("stockUnidad"));
+                articulo.setStockPeso(rs.getDouble("stockPeso"));
                 articulos.add(articulo);
             }
             desconectar();
@@ -374,6 +375,46 @@ public class Articulo {
                 articulo.setDescripcionCalidad(rs.getString("descripcionCalidad"));
                 articulo.setIdCalidad(rs.getInt("idCalidad"));
                 articulo.setMontoPrecioCompra(rs.getDouble("montoPrecioCompra"));
+                articulo.setStockPeso(rs.getDouble("stockPeso"));
+                articulo.setStockUnidad(rs.getInt("stockUnidad"));
+   
+            }
+            desconectar();
+            return articulo;
+
+        } catch (SQLException Ex) {
+            throw Ex;
+        } catch (Exception Ex) {
+            Exception ExcepcionManejada = new Exception("Error al recuperar artículo. Vuelva a intentarlo.", Ex);
+            throw ExcepcionManejada;
+        } finally {
+            desconectar();
+        }
+
+    }
+         
+        public Entidades.Articulo getOnePrecioVenta(int idArticulo,Long idTipoCliente)
+            throws SQLException, ClassNotFoundException, Exception {
+        try {
+            conectar();  
+            String sql;
+                sql = "SELECT * FROM articulo ar inner join calidad cal on ar.idCalidad=cal.idCalidad inner join preciosventa pre on ar.idArticulo=pre.idArticulo where ar.idArticulo=? and fechaHasta is null and idTipoCliente=?";
+            
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setLong(2, idTipoCliente);
+            ps.setInt(1, idArticulo);
+            ResultSet rs = ps.executeQuery();
+            Entidades.Articulo articulo = new Entidades.Articulo();
+            if (rs.next()) {               
+                articulo.setIdArticulo(rs.getInt("idArticulo"));
+                articulo.setDescripcionArticulo(rs.getString("descripcionArticulo"));
+                articulo.setPesoEstimadoArticulo(rs.getDouble("pesoEstimadoArticulo"));
+                articulo.setEstadoArticulo(rs.getString("estadoArticulo"));
+                articulo.setDescripcionCalidad(rs.getString("descripcionCalidad"));
+                articulo.setIdCalidad(rs.getInt("idCalidad"));
+                articulo.setMontoPrecioVenta(rs.getDouble("montoPrecioVenta"));
+                articulo.setStockPeso(rs.getDouble("stockPeso"));
+                articulo.setStockUnidad(rs.getInt("stockUnidad"));
    
             }
             desconectar();
@@ -452,6 +493,7 @@ public class Articulo {
                 articulo.setDescripcionCalidad(rs.getString("descripcionCalidad"));
                 articulo.setIdCalidad(rs.getInt("idCalidad"));
                 articulo.setStockUnidad(rs.getInt("stockUnidad"));
+                articulo.setStockPeso(rs.getDouble("stockPeso"));
                 articulos.add(articulo);
             }
             desconectar();

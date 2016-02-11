@@ -51,6 +51,10 @@ public class CatalogoDeArticulos {
     public Entidades.Articulo getOneArticulo(int idArticulo, long cuitProveedor) throws ClassNotFoundException, Exception {
         return articuloDatos.getOne(idArticulo,cuitProveedor);
     }
+    
+     public Entidades.Articulo getOneArticuloPrecioVenta(int idArticulo, long idTipoCliente) throws ClassNotFoundException, Exception {
+        return articuloDatos.getOnePrecioVenta(idArticulo,idTipoCliente);
+    }
 
    public void decrementarStock(int idArticuloRes, int cantidad) throws SQLException, ClassNotFoundException {
         articuloDatos.decrementarStock(idArticuloRes, cantidad);

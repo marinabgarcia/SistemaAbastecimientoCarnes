@@ -153,6 +153,9 @@ public class Controlador {
     public Entidades.Articulo getOneArticulo(int idArticulo, long cuitProveedor) throws Exception {
         return cda.getOneArticulo(idArticulo, cuitProveedor);
     }
+     public Entidades.Articulo getOneArticuloPrecioVenta(int idArticulo, long idTipoCliente) throws Exception {
+        return cda.getOneArticuloPrecioVenta(idArticulo, idTipoCliente);
+    }
 
     public void altaArticulo(Entidades.Articulo art) throws Exception {
         cda.altaDeArticulo(art);

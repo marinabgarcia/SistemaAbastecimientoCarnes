@@ -73,11 +73,22 @@ public class recuperarDatosArticulo extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            int idArticulo=Integer.parseInt(request.getParameter("idArticulo"));
-            long cuitProveedor= Long.parseLong(request.getParameter("cuitProveedor"));
             Negocio.Controlador con=new Negocio.Controlador();
-            Entidades.Articulo articulo=con.getOneArticulo(idArticulo,cuitProveedor);
-            response.getWriter().print(articulo.getDescripcionArticulo()+"-"+articulo.getDescripcionCalidad()+"-"+articulo.getMontoPrecioCompra());
+            int idArticulo=Integer.parseInt(request.getParameter("idArticulo"));
+            Long cuitProveedor;
+            Long idTipoCliente;
+            if(request.getParameter("cuitProveedor")!=null)
+            {
+                cuitProveedor = Long.parseLong(request.getParameter("cuitProveedor"));
+                Entidades.Articulo articulo=con.getOneArticulo(idArticulo,cuitProveedor);
+                response.getWriter().print(articulo.getDescripcionArticulo()+"-"+articulo.getDescripcionCalidad()+"-"+articulo.getMontoPrecioCompra());
+            }
+            else
+            {
+                idTipoCliente = Long.parseLong(request.getParameter("idTipoCliente"));
+                Entidades.Articulo articulo=con.getOneArticuloPrecioVenta(idArticulo,idTipoCliente);
+                response.getWriter().print(articulo.getDescripcionArticulo()+"-"+articulo.getDescripcionCalidad()+"-"+articulo.getMontoPrecioVenta()+"-"+articulo.getStockPeso());
+            }
         } catch (Exception ex) {
             Logger.getLogger(recuperarDatosArticulo.class.getName()).log(Level.SEVERE, null, ex);
         }

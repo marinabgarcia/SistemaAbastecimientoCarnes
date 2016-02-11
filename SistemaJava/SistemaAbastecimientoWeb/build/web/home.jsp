@@ -220,7 +220,7 @@
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
         <script src="js/Chart.js"></script>
-        <script src="js/jquery.simpleWeather.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
         <script type="text/javascript" src="js/easypiechart.js"></script>
         <script type="text/javascript" src="js/jquery.easypiechart.js"></script>
         <script src="js/bootstrap.min.js"></script>

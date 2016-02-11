@@ -86,17 +86,20 @@ public class cargarWidgets extends HttpServlet {
             for(int i=0;i<compras.size();i++)
             {
                 Entidades.Compra com=compras.get(i);
-                if (com.getEstadoCompra()!="Pagado")
+                if (!com.getEstadoCompra().equals("Pagado"))
                 {
-                    totalAdeudado+=totalAdeudado+com.getPrecioTotalCompra();
+                    System.out.println("compra "+com.getPrecioTotalCompra());
+                    totalAdeudado=+Math.round(totalAdeudado+com.getPrecioTotalCompra());
+                    System.out.println("subtotal "+totalAdeudado);
                 }
             }
-             for(int i=0;i<compras.size();i++)
+            System.out.println("compra "+compras.size());
+             for(int i=0;i<ventas.size();i++)
             {
                 Entidades.Venta com=ventas.get(i);
-                if (com.getEstadoVenta()!="Pagado")
+                if (!com.getEstadoVenta().equals("Pagado"))
                 {
-                    totalPorCobrar+=totalPorCobrar+com.getPrecioTotalVenta();
+                    totalPorCobrar=+Math.round(totalPorCobrar+com.getPrecioTotalVenta());
                 }
             }
              HttpSession session = request.getSession(true);

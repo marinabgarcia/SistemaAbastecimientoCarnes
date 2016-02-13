@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9b6e2a06-b24d-4386-a725-5de43d1b7a7f">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="46"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="idVenta" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
@@ -186,7 +186,7 @@ FROM
 	<columnHeader>
 		<band height="61" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="3c51eed8-bc36-4fbc-8de1-fd8be0f96145" x="0" y="40" width="100" height="20"/>
+				<reportElement uuid="3c51eed8-bc36-4fbc-8de1-fd8be0f96145" x="10" y="40" width="100" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
@@ -200,14 +200,14 @@ FROM
 				<text><![CDATA[CORTE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="4ef60260-549c-4589-9a46-cec0f701b4a5" x="455" y="41" width="100" height="20"/>
+				<reportElement uuid="4ef60260-549c-4589-9a46-cec0f701b4a5" x="409" y="41" width="100" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<text><![CDATA[IMPORTE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="84870f93-02be-4d5a-8b47-d05a0b78ab01" x="292" y="40" width="100" height="20"/>
+				<reportElement uuid="84870f93-02be-4d5a-8b47-d05a0b78ab01" x="269" y="41" width="100" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
@@ -234,12 +234,12 @@ FROM
 				<textFieldExpression><![CDATA[$F{articulo_descripcionArticulo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="f0b8c4db-d764-4387-ad3f-4a1a7b2b5aa4" x="292" y="10" width="100" height="20"/>
+				<reportElement uuid="f0b8c4db-d764-4387-ad3f-4a1a7b2b5aa4" x="269" y="10" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{lineadeventa_pesoLineaVenta}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00">
-				<reportElement uuid="7aea6b10-8b01-4208-b8b7-6392352440d9" x="455" y="10" width="100" height="20"/>
+				<reportElement uuid="7aea6b10-8b01-4208-b8b7-6392352440d9" x="409" y="10" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{lineadeventa_precioLineaVenta}]]></textFieldExpression>
 			</textField>
@@ -255,14 +255,14 @@ FROM
 	<pageFooter>
 		<band height="29" splitType="Stretch">
 			<textField pattern="¤ #,##0.00">
-				<reportElement uuid="c37fc2aa-6ef6-4922-a9d0-1d864e0795d7" x="455" y="9" width="100" height="20"/>
+				<reportElement uuid="c37fc2aa-6ef6-4922-a9d0-1d864e0795d7" x="409" y="9" width="100" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{lineadeventa_precioLineaVenta_1}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="1e1d331c-80c7-4e33-8d60-9e2af569bc11" x="355" y="9" width="100" height="20"/>
+				<reportElement uuid="1e1d331c-80c7-4e33-8d60-9e2af569bc11" x="309" y="9" width="100" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>

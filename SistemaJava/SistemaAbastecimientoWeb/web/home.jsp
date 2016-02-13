@@ -12,7 +12,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Sistema Abastecimiento de Carnes</title>
-        <%if (session.getAttribute("usuarioConectado") == null) {%>
+        <%if (session==null || session.getAttribute("usuarioConectado") == null) {%>
         <script>
             location.href = 'login.jsp';
         </script> 

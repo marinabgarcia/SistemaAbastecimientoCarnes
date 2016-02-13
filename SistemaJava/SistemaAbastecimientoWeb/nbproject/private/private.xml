@@ -3,18 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/src/java/Servlets/cargarTablaPrecio.java</file>
+            <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/web/home.jsp</file>
+            <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/web/balancejasper.jsp</file>
+            <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/web/ccClientes.jsp</file>
+            <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/web/balance.jsp</file>
+            <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/web/ListaProveedor.jrxml</file>
+            <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/src/java/Servlets/loginPrincipal.java</file>
             <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/src/java/Servlets/ImprimirLista.java</file>
             <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/web/venta.jsp</file>
-            <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/src/java/Servlets/cargarTablaPrecio.java</file>
             <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/src/java/Servlets/compra.java</file>
             <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/src/java/Servlets/ImprimirBalance.java</file>
-            <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/web/home.jsp</file>
             <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/web/login.jsp</file>
+            <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/web/balances.jsp</file>
             <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/src/java/FuncionalidadAdicional/recuperarDatosArticulo.java</file>
             <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/web/listaprecios.jsp</file>
-            <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/web/cambioClave.jsp</file>
             <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/web/compra.jsp</file>
-            <file>file:/C:/Users/Marina/Documents/GitHub/SistemaAbastecimientoCarnes/SistemaJava/SistemaAbastecimientoWeb/src/java/Servlets/loginPrincipal.java</file>
         </group>
     </open-files>
 </project-private>

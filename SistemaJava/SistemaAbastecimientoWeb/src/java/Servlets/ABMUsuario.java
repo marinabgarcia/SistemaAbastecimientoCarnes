@@ -85,7 +85,7 @@ public class ABMUsuario extends HttpServlet {
                 byte[] buffer, digest;
                 String hash = "";
                 String contra = new String(request.getParameter("pass").getBytes("ISO-8859-1"), "UTF-8");
-                 if (contra != "") {
+                 if (!contra.equals("")) {
                     buffer = contra.getBytes();
                     md = MessageDigest.getInstance("SHA1");
                     md.update(buffer);

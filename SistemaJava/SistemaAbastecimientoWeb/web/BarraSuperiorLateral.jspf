@@ -21,7 +21,7 @@
                 <span class="icon-bar"></span>
             </button> 
             <!--<img src="imagenes/logo_estancia.png" style=" width:25%; margin-top:-10px; padding-top:0px; overflow:visible"/>--> 
-            <a href="#" class="navbar-brand" style="margin:0px; padding:5px; width:280px; margin-bottom:5px;"><img src="imagenes/cow12.svg" style=" width:20%;display:inline"/>Abastecimiento de carnes</a>
+            <a href="#" class="navbar-brand" style="margin:0px; padding:5px; width:280px; margin-bottom:5px;"><img src="imagenes/cow12.svg" style=" width:20%;display:inline"/>Distribuidora de carnes</a>
         </div>
         <!-- Collection of nav links and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse" >

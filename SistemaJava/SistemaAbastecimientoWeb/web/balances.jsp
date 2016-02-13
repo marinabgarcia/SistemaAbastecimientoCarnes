@@ -33,53 +33,76 @@
     </head>
     <body>
         <%@ include file="BarraSuperiorLateral.jspf" %>
-  <form id='imprimir' method='post' action="ImprimirBalance">
-       <div class="col-lg-10 col-md-10" style=" margin:0px; padding:0px; background-color:rgba(252,252,252,1.00)">
+        <div class="col-lg-10 col-md-10" style=" margin:0px; padding:0px; background-color:rgba(252,252,252,1.00)">
             <div class="col-lg-12 col-md-12" style=" background-color:rgba(249,249,249,1.00); margin:0px; border-bottom:2px inset rgba(227,227,227,1.00); padding:15px; padding-left:25px; margin-bottom:20px;">
-                <div class="col-md-12col-sm-12 col-xs-12 col-lg-12 column" style="">
-                    <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6 column" style="">
+                <small>Consultas > <b>Balance</b></small>
+                <h4 style=" color:rgba(235,57,60,1.00)">Balance</h4>
+            </div>
+
+            <div class="row clearfix" id="alertaError" hidden style="margin-bottom: -20px; margin-top: 10px;">
+                <div class="col-md-3 column" style="margin-bottom: 0px;"></div>
+                <div class="col-md-6 column" style="margin-bottom: 0px;">
+                    <div class="alert alert-dismissable alert-danger">
+                        <button type="button" class="close" onclick="document.getElementById('alertaError').style.display = 'none';">×</button>
+                        <h4>
+
+                        </h4> <strong>Error!</strong> <p id="error"></p>
+                    </div>
+                </div>
+                <div class="col-md-3 column" style="margin-bottom: 0px;"></div>
+            </div>
+            <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" style="color: #373737;">                
+                <div class="row clearfix" id="errorModificarD" hidden style="margin-bottom: -20px; margin-top: 10px;">
+                    <div class="col-md-3 column" style="margin-bottom: 0px;"></div>
+                    <div class="col-md-6 column" style="margin-bottom: 0px;">
+                        <div class="alert alert-dismissable alert-danger">
+                            <button type="button" class="close" onclick="document.getElementById('errorModificarD').style.display = 'none';">×</button>
+                            <h4>
+                            </h4> <strong>Error!</strong> <p id="errorModificar"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 column" style="margin-bottom: 0px;"></div>
+                </div>
+            </div>  
+
+            <div class="col-md-12" style="">
+
+                <form id='imprimir' method='post' action="ImprimirBalance">
+                    <div class="col-md-8" style="">
                         <div class="form-group">
                             <label for="calidad">Fecha Inicio:</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                <input type="date" class="form-control" id="fechaIni"  required="true" name="fechaIni"/>
+                                <input type="date" required class="form-control" id="fechaIni"  required="true" name="fechaIni"/>
                             </div>
                         </div> 
-                         <button type="button" class="btn btn-info btn-block" data-dismiss="alert" onClick="OnImprimirClick()" aria-hidden="true" style=" height: 100px; width: 110px; margin-left: 0px;"><span class="fa fa-print fa-3x" style=" color: white; display: block;"></span>Imprimir </button>
-                    </div>
-                    <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6 column" style="">
+
+
                         <div id="divProveedor" class="form-group">
                             <label for="calidad">Fecha Fin:</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                <input type="date" class="form-control" id="fechaFin" required="true" name="fechaFin"/>
+                                <input type="date" required class="form-control" id="fechaFin" required="true" name="fechaFin"/>
                             </div>
                         </div> 
-                     
-                      
-                           
-                        
-                        
                     </div>
-                </div>
-                <div class="col-md-12col-sm-12 col-xs-12 col-lg-12 column" style="margin-left: 300px">
-                  
-                <img src="./Balance.png" alt="Balance"width="600px"height="900px">
-     
-                </div>
-                    
+                    <div class="col-md-4" style="">
+                        <button type="submit" class="btn btn-info btn-block" data-dismiss="alert" aria-hidden="true" style=" height: 100px; width: 110px; margin-left: 0px;"><span class="fa fa-print fa-3x" style=" color: white; display: block;"></span>Imprimir </button>
+                    </div>
+                </form>
+            </div>
         </div>
-        </div>   
-      </form>
-   <script>
-                                      function  OnImprimirClick()
-                                {
-                                    //aca agarrar los datos adecuados  y hacer submit
-                                    //var datos = $('#grid3').bootgrid().data('.rs.jquery.bootgrid').currentRows;
-                                   // document.getElementById("cuit").value = datos[0].idVentaS;
-                                   // document.getElementById("tipoCliente").value = 2;
-                                    document.getElementById("imprimir").submit();
-                                }
-  </script>
+
+        <%@ include file="PieDePagina.jspf" %>
+        <script>
+            function  OnImprimirClick()
+            {
+                //aca agarrar los datos adecuados  y hacer submit
+                //var datos = $('#grid3').bootgrid().data('.rs.jquery.bootgrid').currentRows;
+                // document.getElementById("cuit").value = datos[0].idVentaS;
+                // document.getElementById("tipoCliente").value = 2;
+                document.getElementById("imprimir").submit();
+            }
+        </script>
     </body>
 </html>

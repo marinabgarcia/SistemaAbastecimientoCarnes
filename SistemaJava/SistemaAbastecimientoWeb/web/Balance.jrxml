@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b3e9cd79-d419-46a6-a600-5081cac519a4">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="445"/>
+	<property name="ireport.y" value="164"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -112,7 +112,7 @@ WHERE
 				</textElement>
 				<text><![CDATA[Deudores por ventas]]></text>
 			</staticText>
-			<textField pattern="¤ #,##0.00">
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
 				<reportElement uuid="9ad2d897-ca5f-481c-9fa0-d7755c1f04db" x="455" y="398" width="100" height="20" forecolor="#000000"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
@@ -126,7 +126,7 @@ WHERE
 				</textElement>
 				<text><![CDATA[Acredores por compras]]></text>
 			</staticText>
-			<textField pattern="¤ #,##0.00">
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
 				<reportElement uuid="c82a9370-c168-4495-98b0-98bea6767e34" x="456" y="167" width="99" height="20" forecolor="#000000"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="false"/>
@@ -144,7 +144,7 @@ WHERE
 				<subreportParameter name="fecha_inis"/>
 				<subreportParameter name="fecha_fins"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["C:\\Users\\FlO\\SistemaAbastecimientoCarnes\\SistemaAbastecimientoCarnes\\SistemaJava\\SistemaAbastecimientoWeb\\web\\stock.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA["stock.jasper"]]></subreportExpression>
 			</subreport>
 			<subreport>
 				<reportElement uuid="0dd6c7e0-3f17-4c05-85a1-0793ebf4fe17" x="16" y="198" width="527" height="130"/>
@@ -152,7 +152,7 @@ WHERE
 				<subreportParameter name="fecha_fina"/>
 				<subreportParameter name="totala"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["C:\\Users\\FlO\\SistemaAbastecimientoCarnes\\SistemaAbastecimientoCarnes\\SistemaJava\\SistemaAbastecimientoWeb\\web\\Activo.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA["Activo.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>

@@ -33,8 +33,7 @@
     </head>
     <body>
         <%@ include file="BarraSuperiorLateral.jspf" %>
-        <div class="col-lg-10 col-md-10" style=" margin:0px; padding:0px; background-color:rgba(252,252,252,1.00)">
-            <div class="col-lg-12 col-md-12" style=" background-color:rgba(249,249,249,1.00); margin:0px; border-bottom:2px inset rgba(227,227,227,1.00); padding:15px; padding-left:25px; margin-bottom:20px;">
+        
                 <small>Carga de datos > <b>Lista de Precios</b></small>
                 <h4 style=" color:rgba(235,57,60,1.00)">Lista de Precios</h4>
             </div>

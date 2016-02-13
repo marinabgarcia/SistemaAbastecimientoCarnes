@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b3e9cd79-d419-46a6-a600-5081cac519a4">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="104"/>
+	<property name="ireport.y" value="445"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -35,7 +35,7 @@ WHERE
  compra.`fechaCompra`>=$P{fecha_ini}]]>
 	</queryString>
 	<field name="venta_sumaP" class="java.lang.Double"/>
-	<field name="compra_suma" class="java.lang.Double"/>
+	<field name="compra_suma" class="java.math.BigDecimal"/>
 	<variable name="Total" class="java.lang.Double">
 		<variableExpression><![CDATA[]]></variableExpression>
 	</variable>
@@ -49,7 +49,7 @@ WHERE
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="114" splitType="Stretch">
+		<band height="96" splitType="Stretch">
 			<staticText>
 				<reportElement uuid="442dfc79-171a-42ad-a4f4-f9ac6e43e951" style="Title" x="138" y="0" width="272" height="62"/>
 				<textElement verticalAlignment="Middle">
@@ -58,28 +58,28 @@ WHERE
 				<text><![CDATA[BALANCE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="b7a3328f-1ca4-4a49-ac2c-c8f3a8b1098b" style="SubTitle" x="16" y="88" width="121" height="22" forecolor="#000000"/>
+				<reportElement uuid="b7a3328f-1ca4-4a49-ac2c-c8f3a8b1098b" style="SubTitle" x="16" y="64" width="121" height="22" forecolor="#000000"/>
 				<textElement>
 					<font fontName="Arial" size="18" isBold="true" pdfFontName="Times-Roman"/>
 				</textElement>
 				<text><![CDATA[Fecha inicio:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="b7a3328f-1ca4-4a49-ac2c-c8f3a8b1098b" style="SubTitle" x="353" y="86" width="90" height="22" forecolor="#000000"/>
+				<reportElement uuid="b7a3328f-1ca4-4a49-ac2c-c8f3a8b1098b" style="SubTitle" x="353" y="64" width="90" height="22" forecolor="#000000"/>
 				<textElement>
 					<font fontName="Arial" isBold="true" pdfFontName="Times-Roman"/>
 				</textElement>
 				<text><![CDATA[Fecha fin:]]></text>
 			</staticText>
-			<textField pattern="dd-MMM-yy">
-				<reportElement uuid="db1dd08e-ad85-4fe1-8d63-0843c569bcb9" x="138" y="90" width="100" height="20"/>
+			<textField pattern="d/M/yyyy">
+				<reportElement uuid="db1dd08e-ad85-4fe1-8d63-0843c569bcb9" x="138" y="68" width="100" height="18"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{fecha_ini}]]></textFieldExpression>
 			</textField>
-			<textField pattern="dd-MMM-yy">
-				<reportElement uuid="c08e0f31-c163-4830-bb66-e534ce6e339a" x="443" y="88" width="100" height="20"/>
+			<textField pattern="d/M/yyyy">
+				<reportElement uuid="c08e0f31-c163-4830-bb66-e534ce6e339a" x="444" y="68" width="100" height="18"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
@@ -101,145 +101,107 @@ WHERE
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="397" splitType="Stretch">
+		<band height="424" splitType="Stretch">
 			<frame>
 				<reportElement uuid="6c7d5763-4259-4bd8-9ba5-3940114ecc82" style="Row" mode="Opaque" x="0" y="0" width="555" height="15"/>
 			</frame>
 			<staticText>
-				<reportElement uuid="0c28ff91-416c-463c-838d-e66c19442807" x="62" y="279" width="110" height="20"/>
+				<reportElement uuid="0c28ff91-416c-463c-838d-e66c19442807" x="16" y="168" width="121" height="20" forecolor="#000000"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<text><![CDATA[Deudas por ventas]]></text>
+				<text><![CDATA[Deudores por ventas]]></text>
 			</staticText>
 			<textField pattern="¤ #,##0.00">
-				<reportElement uuid="9ad2d897-ca5f-481c-9fa0-d7755c1f04db" x="443" y="278" width="100" height="20"/>
+				<reportElement uuid="9ad2d897-ca5f-481c-9fa0-d7755c1f04db" x="455" y="398" width="100" height="20" forecolor="#000000"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{venta_sumaP}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="65124ca1-0965-47ec-a484-f701a0831251" x="62" y="123" width="138" height="20"/>
+				<reportElement uuid="65124ca1-0965-47ec-a484-f701a0831251" x="16" y="398" width="138" height="20" forecolor="#000000"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Acredores por compras]]></text>
 			</staticText>
 			<textField pattern="¤ #,##0.00">
-				<reportElement uuid="c82a9370-c168-4495-98b0-98bea6767e34" x="443" y="123" width="99" height="20"/>
+				<reportElement uuid="c82a9370-c168-4495-98b0-98bea6767e34" x="456" y="167" width="99" height="20" forecolor="#000000"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{compra_suma}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement uuid="5b1a68cb-1f1c-4d5a-95ff-77212c2762a2" x="154" y="418" width="301" height="1" forecolor="#000000"/>
+			</line>
+			<line>
+				<reportElement uuid="44f6194f-bdee-4cdd-83da-2ab9613545d5" x="126" y="187" width="329" height="1" forecolor="#000000"/>
+			</line>
 			<subreport>
-				<reportElement uuid="75aedc36-9f42-476c-a26b-30feac1abf27" x="63" y="40" width="432" height="61"/>
+				<reportElement uuid="05cf5ace-3256-4c40-8371-7096cd7be08b" x="16" y="15" width="527" height="112"/>
+				<subreportParameter name="fecha_inis"/>
+				<subreportParameter name="fecha_fins"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "stock.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA["C:\\Users\\FlO\\SistemaAbastecimientoCarnes\\SistemaAbastecimientoCarnes\\SistemaJava\\SistemaAbastecimientoWeb\\web\\stock.jasper"]]></subreportExpression>
 			</subreport>
 			<subreport>
-				<reportElement uuid="3bd73485-6c28-49bb-8c55-365dcd3bacc1" x="63" y="155" width="431" height="63"/>
-				<subreportParameter name="totala">
-					<subreportParameterExpression><![CDATA[$V{Total}]]></subreportParameterExpression>
-				</subreportParameter>
-				<subreportParameter name="fecha_fina">
-					<subreportParameterExpression><![CDATA[$P{fecha_fin}]]></subreportParameterExpression>
-				</subreportParameter>
-				<subreportParameter name="fecha_inia">
-					<subreportParameterExpression><![CDATA[$P{fecha_ini}]]></subreportParameterExpression>
-				</subreportParameter>
+				<reportElement uuid="0dd6c7e0-3f17-4c05-85a1-0793ebf4fe17" x="16" y="198" width="527" height="130"/>
+				<subreportParameter name="fecha_inia"/>
+				<subreportParameter name="fecha_fina"/>
+				<subreportParameter name="totala"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<returnValue subreportVariable="TotalActivo" toVariable="Total"/>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "Activo.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA["C:\\Users\\FlO\\SistemaAbastecimientoCarnes\\SistemaAbastecimientoCarnes\\SistemaJava\\SistemaAbastecimientoWeb\\web\\Activo.jasper"]]></subreportExpression>
 			</subreport>
-			<staticText>
-				<reportElement uuid="b7a3328f-1ca4-4a49-ac2c-c8f3a8b1098b" style="SubTitle" x="0" y="91" width="68" height="22" forecolor="#000000"/>
-				<textElement>
-					<font fontName="Arial" isBold="true" isUnderline="true" pdfFontName="Times-Roman"/>
-				</textElement>
-				<text><![CDATA[Pasivo:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="b7a3328f-1ca4-4a49-ac2c-c8f3a8b1098b" style="SubTitle" x="0" y="196" width="68" height="22" forecolor="#000000"/>
-				<textElement>
-					<font fontName="Arial" isBold="true" isUnderline="true" pdfFontName="Times-Roman"/>
-				</textElement>
-				<text><![CDATA[Activo:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="b7a3328f-1ca4-4a49-ac2c-c8f3a8b1098b" style="SubTitle" x="0" y="28" width="62" height="22" forecolor="#000000"/>
-				<textElement>
-					<font fontName="Arial" isBold="true" isUnderline="true" pdfFontName="Times-Roman"/>
-				</textElement>
-				<text><![CDATA[Stock:]]></text>
-			</staticText>
-			<line>
-				<reportElement uuid="5b1a68cb-1f1c-4d5a-95ff-77212c2762a2" x="200" y="142" width="230" height="1"/>
-			</line>
-			<line>
-				<reportElement uuid="44f6194f-bdee-4cdd-83da-2ab9613545d5" x="172" y="298" width="258" height="1"/>
-			</line>
-			<staticText>
-				<reportElement uuid="b7a3328f-1ca4-4a49-ac2c-c8f3a8b1098b" style="SubTitle" x="1" y="320" width="68" height="22" forecolor="#000000"/>
-				<textElement>
-					<font fontName="Arial" isBold="true" isUnderline="true" pdfFontName="Times-Roman"/>
-				</textElement>
-				<text><![CDATA[Total:]]></text>
-			</staticText>
-			<textField pattern="¤ #,##0.00">
-				<reportElement uuid="2e6f4b94-d300-4ace-b6fc-38ec139dd58f" x="443" y="352" width="100" height="20"/>
-				<textElement>
-					<font fontName="Arial" size="12" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{TotalTotal}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement uuid="0c28ff91-416c-463c-838d-e66c19442807" x="68" y="352" width="110" height="20"/>
-				<textElement>
-					<font fontName="Arial" size="12"/>
-				</textElement>
-				<text><![CDATA[TOTAL]]></text>
-			</staticText>
-			<line>
-				<reportElement uuid="7205bdb6-6e68-43e2-97ec-91a8baa23ff9" x="179" y="371" width="251" height="1"/>
-			</line>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch">
+		<band height="22" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="112" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2920a5a0-7396-4b59-a5aa-322bb341edbf" x="0" y="0" width="607" height="19"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[*Mercaderia en stock: Monto en pesos correspondiente a la cantidad de mercaderia en stock  valor precio generico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2920a5a0-7396-4b59-a5aa-322bb341edbf" x="0" y="19" width="384" height="19"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[*Ventas: Monto en pesos correspondiente a las ventas concretadas  y pagadas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2920a5a0-7396-4b59-a5aa-322bb341edbf" x="0" y="38" width="539" height="19"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[*Deudores  por Ventas: Monto en pesos correspondiente a las ventas Concretadas pero aun adeudadas por el cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2920a5a0-7396-4b59-a5aa-322bb341edbf" x="0" y="57" width="384" height="19"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[*Compras: Monto en pesos correspondiente a las compras concretadas  y pagadas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2920a5a0-7396-4b59-a5aa-322bb341edbf" x="0" y="76" width="580" height="19"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[*Accredores por compras: Monto en pesos correspondiente a las compras concretadas  pero aun adeudadas  al proveedor]]></text>
+			</staticText>
 			<line>
-				<reportElement uuid="233f9ac2-d4d9-4877-bb44-177ac964054a" positionType="FixRelativeToBottom" x="16" y="7" width="555" height="1"/>
+				<reportElement uuid="233f9ac2-d4d9-4877-bb44-177ac964054a" positionType="FixRelativeToBottom" x="0" y="0" width="555" height="1"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
-			<textField>
-				<reportElement uuid="d0b35b6f-9afe-4870-ada6-7edd64a5ce4a" x="27" y="8" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$V{Total}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="613da055-ea93-4fd2-a542-7706096425eb" x="127" y="8" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{venta_sumaP}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="a3f74721-343d-42fd-b0cf-4c2a7f3499ac" x="238" y="7" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{compra_suma}]]></textFieldExpression>
-			</textField>
-		</band>
-	</columnFooter>
-	<pageFooter>
-		<band height="47" splitType="Stretch">
-			<staticText>
-				<reportElement uuid="2920a5a0-7396-4b59-a5aa-322bb341edbf" x="27" y="0" width="383" height="42"/>
-				<textElement textAlignment="Right">
-					<font size="10"/>
-				</textElement>
-				<text><![CDATA[Esto sitve como para poner detalle en caso de necesitarlo]]></text>
-			</staticText>
 		</band>
 	</pageFooter>
 	<summary>

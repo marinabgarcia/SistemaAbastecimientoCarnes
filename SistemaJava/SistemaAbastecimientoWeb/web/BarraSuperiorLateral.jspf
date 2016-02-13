@@ -8,7 +8,7 @@
 </script>
 <%@ page pageEncoding="UTF-8" %>
 <% Entidades.Usuario usuarioConectado = (Entidades.Usuario) session.getAttribute("usuarioConectado");
-    if ("Administrador".equals(usuarioConectado.getTipoUsuario())) {%>
+    if (usuarioConectado!=null && "Administrador".equals(usuarioConectado.getTipoUsuario())) {%>
 
 <nav id="menuSup" role="navigation" class="navbar navbar-inverse navbar-static-top" style="margin-bottom:0px; background-color:rgba(204,35,46,1.00)">
     <div class="container-fluid">

@@ -114,7 +114,10 @@ public class loginPrincipal extends HttpServlet {
                     request.getRequestDispatcher("home.jsp").forward(request, response);
                 }
             } else {
-                response.sendRedirect("login.jsp");
+                   session.setAttribute("usuarioConectado", usuario);
+                    
+                  //  request.setAttribute("ventana", "ventanaFechaSistema");
+                    request.getRequestDispatcher("home.jsp").forward(request, response);
             }
         } catch (Exception ex) {
             request.setAttribute("error", ex.getMessage());

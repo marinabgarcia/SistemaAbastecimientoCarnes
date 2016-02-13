@@ -470,6 +470,7 @@
                                                             $("#" + (id + "-tick")).addClass('fa-minus-circle');
                                                             document.getElementById(id + "-tick").style.color = 'red';
                                                         }
+                                                        $(("#" + id + "-quantity")).focus();
                                                     });
                                                     //document.getElementById(($(this).data("row-id")+"-tick")).style.display="initial";
 

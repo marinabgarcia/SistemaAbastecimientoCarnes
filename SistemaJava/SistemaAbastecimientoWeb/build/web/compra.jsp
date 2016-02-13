@@ -82,7 +82,7 @@
                             <li><button onclick="btnEliminarOnClick()" type="button" role="button" class="btn btn-danger btn-block" value="Agregar" style=" height: 110px; min-width: 110px"><span class="fa fa-times fa-3x" style=" color: white; display: block;"></span>Eliminar</button></li>
                             <li> <button onclick="btnPagarOnclick()" type="button" role="button" class="btn btn-warning btn-block" value="Agregar" style=" height: 110px; min-width: 110px"><span class="fa fa-dollar fa-3x" style=" color: white; display: block;"></span>Pagar</button></li>
                             <li> <button onclick="btnDetallesOnclick()" type="button" role="button" class="btn btn-info btn-block" value="detalles" style=" height: 110px; min-width: 110px"><span class="fa fa-search fa-3x" style=" color: white; display: block;"></span>Detalles</button></li>
-                            <li><button onclick="btnFraccionarOnclick()" type="button" role="button" class="btn btn-primary btn-block" value="Agregar" style=" height: 110px; min-width: 110px"><span class="fa fa-cut fa-3x" style=" color: white; display: block;"></span>Fraccionar</button></li>
+                            <li><button onclick="btnFraccionarOnclick()" type="button" role="button" class="btn btn-primary btn-block" value="Agregar" style="display: none; height: 110px; min-width: 110px"><span class="fa fa-cut fa-3x" style=" color: white; display: block;"></span>Fraccionar</button></li>
 
                         </ul>
                     </div>
@@ -260,7 +260,7 @@
                                                 <div class="form-group">
                                                     <label for="apellido" style=" font-size: 15px;">Peso:</label>
                                                     <div class="input-group">                                                           
-                                                        <input required type="number" min="0" step='any' class="form-control" id="pesoLineaCompra" name="pesoLineaCompra"/>
+                                                        <input required type="number" min="0.1" step='any' class="form-control" id="pesoLineaCompra" name="pesoLineaCompra"/>
                                                         <span class="input-group-addon">kg</span>
                                                     </div>
                                                 </div>
@@ -1470,6 +1470,7 @@
                 document.getElementById('observacionLineaCompra').value = '';
                 document.getElementById("descripcionArticulo").value = '';
                 document.getElementById("calidadArticulo").value = '';
+                document.getElementById("idArticulo").focus();
                 return false;
             });
 

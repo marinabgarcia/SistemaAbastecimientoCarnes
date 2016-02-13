@@ -220,6 +220,10 @@
         <servlet-name>ImprimirLista</servlet-name>
         <servlet-class>Servlets.ImprimirLista</servlet-class>
     </servlet>
+     <servlet>
+        <servlet-name>cambiarClave</servlet-name>
+        <servlet-class>Servlets.cambiarClave</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ABMArticulo</servlet-name>
         <url-pattern>/ABMArticulo</url-pattern>
@@ -439,6 +443,10 @@
      <servlet-mapping>
         <servlet-name>ImprimirLista</servlet-name>
         <url-pattern>/ImprimirLista</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cambiarClave</servlet-name>
+        <url-pattern>/cambiarClave</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

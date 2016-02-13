@@ -64,7 +64,7 @@
                 </div>
                 <div class="col-md-12col-sm-12 col-xs-12 col-lg-12 column" style="margin-left: 300px">
                   
-                <img src="/SistemaAbastecimientoWeb/Balance.png" alt="Balance"width="600px"height="900px">
+                <img src="./Balance.png" alt="Balance"width="600px"height="900px">
      
                 </div>
                     

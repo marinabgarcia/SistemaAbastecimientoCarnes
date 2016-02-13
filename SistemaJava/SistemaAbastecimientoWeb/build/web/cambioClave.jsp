@@ -30,66 +30,68 @@
     </head>
 
     <body id="loginP">
-             <div class="page-container">
-
-              <h1 style=" color:#ffffff; text-align: center;">Cambio de Contraseña</h1>
-		<div class="container-fluid">
-	<div class="row" style="margin-left: 100px">
-		<div class="col-md-4">
-		</div>
-		<div class="col-md-4">
-                    <form role="form" method="post" action="cambiarClave">
-                    
-                <%
-                    if (request.getAttribute("error") != null) {
-                %>
-                <p style="color:red;"><span>                      
-                        <%
-                            out.println(request.getAttribute("error"));
-                            request.setAttribute("error", "");
-                        %>
-                    </span></p>
-                    <%
-                        }
-                    %>
-                         <input id="loginDni" type="text" name="loginDni" autocomplete="false" class="username" placeholder="DNI" style="color: #ffffff;">
-				
-			<input id="loginContra" type="password"  name="passAct" class="username" placeholder="CONTRASEÑA ACTUAL" style="color: #ffffff;" />
-				
-			<input id="loginContra" name="passNew"  type="password" class="username" placeholder="CONTRASEÑA NUEVA" style="color: #ffffff;" />
-				
-			<input id="loginContra" name="passNew2" type="password" class="username" placeholder="REPITA CONTRASEÑA  NUEVA" style="color: #ffffff;" />
-                        <br>
-                        <br>
-                         <button  type="submit" onClick="onVolverClick()" class="btn btn-default">
-					Volver
-			</button>
-				
-                        <button type="submit" class="btn btn-default"  style="margin-left: 150px">
-					Guardar
-                        </button>
-			
-			
-                              
-		
-
-             </form>
-		</div>
-		<div class="col-md-4">
-		</div>
-	</div>
-</div>
-		 
-             </div>       
-
-            
+        <div class="page-container">
         
-                        <script>
-                        function onVolverClick() {
-                            document.location.href='login.jsp';
-                        };
-                    </script>                
-                    
+                    <div class="col-md-12">
+                        <h1 style=" color:#ffffff; text-align: center;">Cambio de Contraseña</h1>
+                        <form role="form" method="post" action="cambiarClave">
+
+                            <%
+                                if (request.getAttribute("error") != null) {
+                            %>
+                            <p style="color:red;"><span>                      
+                                    <%
+                                        out.println(request.getAttribute("error"));
+                                        request.setAttribute("error", "");
+                                    %>
+                                </span></p>
+                                <%
+                                    }
+                                %>
+                            <div class="col-md-12" style="text-align: center">
+                                <input id="loginDni" type="text" name="loginDni" autocomplete="false" class="username" placeholder="DNI" style="color: #ffffff;">
+                            </div>
+                            <div class="col-md-12" style="text-align: center">
+                                <input id="loginContra" type="password"  name="passAct" class="username" placeholder="CONTRASEÑA ACTUAL" style="color: #ffffff;" />
+                            </div>
+                            <div class="col-md-12" style="text-align: center">
+                                <input id="loginContra" name="passNew"  type="password" class="username" placeholder="CONTRASEÑA NUEVA" style="color: #ffffff;" />
+                            </div>
+                            <div class="col-md-12" style="text-align: center">
+                                <input id="loginContra" name="passNew2" type="password" class="username" placeholder="REPITA CONTRASEÑA  NUEVA" style="color: #ffffff;" />
+                            </div>
+                            <br>
+                            <br>
+                            <div class="col-md-12" style="text-align: center">
+                            <button id="loginBtn"  type="submit" onClick="onVolverClick()" >
+                                Volver
+                            </button>
+
+                            <button id="loginBtn" type="submit">
+                                Guardar
+                            </button>
+                            </div>
+
+
+
+
+
+                        </form>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+      
+
+
+
+        <script>
+            function onVolverClick() {
+                document.location.href = 'home.jsp';
+            }
+            ;
+        </script>                
+
 
     </body>
 

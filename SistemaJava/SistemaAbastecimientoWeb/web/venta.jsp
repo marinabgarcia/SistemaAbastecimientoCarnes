@@ -339,7 +339,7 @@
                                                 <div class="form-group">
                                                     <label for="apellido" style=" font-size: 15px;">Peso Total:</label>
                                                     <div class="input-group">                                                           
-                                                        <input required type="number" min="0" step='any' class="form-control" id="pesoLineaVenta" name="pesoLineaVenta" onchange="validarStock()"/>
+                                                        <input required type="number" min="0.1" step='any' class="form-control" id="pesoLineaVenta" name="pesoLineaVenta" onchange="validarStock()"/>
                                                         <span class="input-group-addon">kg</span>
                                                     </div>
                                                 </div>
@@ -1501,7 +1501,7 @@
                 document.getElementById('observacionLineaVenta').value = '';
                 document.getElementById("descripcionArticulo").value = '';
                 document.getElementById("calidadArticulo").value = '';
-
+                document.getElementById("idArticulo").focus();
                 return false;
             });
 

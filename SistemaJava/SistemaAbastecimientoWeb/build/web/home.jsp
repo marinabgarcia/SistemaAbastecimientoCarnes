@@ -55,7 +55,7 @@
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="margin:0px; padding:0px; text-align:right; padding-right:5px;">
                         <b style="color:white;">Cantidad Clientes</b>
-                        <b id="clientes" style="color:white; font-size:30px; margin:0px">2.000</b>
+                        <b id="clientes" style="color:white; font-size:30px; margin:0px">0</b>
                     </div>
                     <div class="clearfix visible-sm-block"></div>
                     <div class="clearfix visible-xs-block"></div>
@@ -70,7 +70,7 @@
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="margin:0px; padding:0px; text-align:right; padding-right:5px;">
                         <b style="color:white;">Cantidad Proveedores</b>
-                        <b id="proveedores" style="color:white; font-size:30px; margin:0px">1.000</b>
+                        <b id="proveedores" style="color:white; font-size:30px; margin:0px">0</b>
                     </div>
                     <div class="clearfix visible-sm-block"></div>
                     <div class="clearfix visible-xs-block"></div>
@@ -85,7 +85,7 @@
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="margin:0px; padding:0px; text-align:right; padding-right:5px;">
                         <b style="color:white;">Monto Por Cobrar </b>
-                        <b id="cobros" style="color:white; font-size:30px; margin:0px">$12.00</b>
+                        <b id="cobros" style="color:white; font-size:30px; margin:0px">$0.00</b>
                     </div>
                     <div class="clearfix visible-sm-block"></div>
                     <div class="clearfix visible-xs-block"></div>
@@ -100,7 +100,7 @@
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="margin:0px; padding:0px; text-align:right;padding-right:5px;">
                         <b style="color:white;">Monto Adeudado </b>
-                        <b id="pagos" style="color:white; font-size:30px; margin:0px">$150.000</b>
+                        <b id="pagos" style="color:white; font-size:30px; margin:0px">$0.00</b>
                     </div>
                     <div class="clearfix visible-sm-block"></div>
                     <div class="clearfix visible-xs-block"></div>
@@ -131,7 +131,7 @@
                             <br/>
                             <!--<b>Última conexión:</b><p style=" display:inline; padding-left:15px;">11/08/2014 10:34</p>-->
                             <div class="col-md-12 column">
-                                <button type="button" class="btn btn-danger btn-block">Cambiar Contraseña</button>
+                                <button type="button" class="btn btn-danger btn-block" onclick="document.location.href='cambioClave.jsp';">Cambiar Contraseña</button>
                             </div>
 
 
@@ -259,7 +259,7 @@
                     },
                     {
                         label: "Compras",
-                        fillColor: "rgba(217, 55, 36, 0.2);",
+                        fillColor: "rgba(255, 0, 0, 0.2",
                         strokeColor: "rgba(190, 47, 72, 1)",
                         pointColor: " rgba(190, 47, 72, 1)",
                         pointStrokeColor: "#fff",

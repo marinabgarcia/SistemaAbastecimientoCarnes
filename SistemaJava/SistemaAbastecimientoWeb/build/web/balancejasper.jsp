@@ -53,9 +53,9 @@
             //File reportFile = new File(application.getRealPath("ticket.jasper"));
         
               JasperDesign _des = JRXmlLoader.load(context.getRealPath("Balance.jrxml"));
-             _des.setPageHeight(553);
-             _des.setPageWidth(468);
-            Date fechaInicio =Date.valueOf(request.getAttribute("fechaInicio").toString());
+             _des.setPageHeight(800);
+             _des.setPageWidth(600);
+            Date fechaInicio =Date.valueOf(request.getAttribute("fechaIni").toString());
             Date fechaFin =Date.valueOf(request.getAttribute("fechaFin").toString());
             Map parameters = new HashMap();
             parameters.put("fecha_ini", fechaInicio);

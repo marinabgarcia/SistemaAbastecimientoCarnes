@@ -33,7 +33,8 @@
     </head>
     <body>
         <%@ include file="BarraSuperiorLateral.jspf" %>
-        
+        <div class="col-lg-10 col-md-10" style=" margin:0px; padding:0px; background-color:rgba(252,252,252,1.00)">
+-            <div class="col-lg-12 col-md-12" style=" background-color:rgba(249,249,249,1.00); margin:0px; border-bottom:2px inset rgba(227,227,227,1.00); padding:15px; padding-left:25px; margin-bottom:20px;">
                 <small>Carga de datos > <b>Lista de Precios</b></small>
                 <h4 style=" color:rgba(235,57,60,1.00)">Lista de Precios</h4>
             </div>
@@ -145,7 +146,7 @@
                 <!--FIN-->
                  <form id='imprimir' method='post' action="ImprimirLista">
                 <div class="col-md-12col-sm-12 col-xs-12 col-lg-12 column" style="">
-                    <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6 column" style="">
+                    <div class="col-md-5 col-sm-12 col-xs-12 col-lg-5 column" style="">
                         <div class="form-group">
                             <label for="calidad">Tipo Lista de Precios:</label>
                             <div class="input-group">
@@ -156,9 +157,9 @@
                                 </select>
                             </div>
                         </div> 
-                         <button type="button" class="btn btn-info btn-block" data-dismiss="alert" onClick="OnImprimirClick()" aria-hidden="true" style=" height: 100px; width: 110px; margin-left: 0px;"><span class="fa fa-print fa-3x" style=" color: white; display: block;"></span>Imprimir Lista</button>
+                        
                     </div>
-                    <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6 column" style="">
+                    <div class="col-md-5 col-sm-12 col-xs-12 col-lg-5 column" style="">
                         <div id="divProveedor" class="form-group">
                             <label for="calidad">Proveedores:</label>
                             <div class="input-group">
@@ -181,6 +182,9 @@
                         
                        
                     </div>
+                     <div class="col-md-2 col-sm-12 col-xs-12 col-lg-2 column" style="">
+                          <button type="button" class="btn btn-info btn-block" data-dismiss="alert" onClick="OnImprimirClick()" aria-hidden="true" ><span class="fa fa-print fa-3x" style=" color: white; display: block;"></span>Imprimir Lista</button>
+                     </div>
                 </div>
                      </form>
                 <div id="divRestablecer" class="col-md-12 column col-sm-12 col-xs-12 col-lg-12 column" style="padding: 20px; display: none;">

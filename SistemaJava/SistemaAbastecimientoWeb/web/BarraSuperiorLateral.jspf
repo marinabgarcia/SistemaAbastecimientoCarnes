@@ -37,7 +37,7 @@
                 <li class="hidden-lg hidden-md"><a href="proveedores.jsp">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="fa fa-truck" style=" display:inline; margin-right:10px;"></span>Proveedores</a></li>
                 <li class="hidden-lg hidden-md"><a href="usuarios.jsp">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="fa fa-truck" style=" display:inline; margin-right:10px;"></span>Usuarios</a></li>
                 <li class="hidden-lg hidden-md"><a href="listaprecios.jsp"><span class="fa fa-usd" style=" display:inline; margin-right:10px;"></span>Listas de precios</a></li>
-                <li class="hidden-lg hidden-md"><a href="#"><span class="fa fa-bar-chart" style=" display:inline; margin-right:10px;"></span>Balances</a></li>
+                <li class="hidden-lg hidden-md"><a href="balances.jsp"><span class="fa fa-bar-chart" style=" display:inline; margin-right:10px;"></span>Balances</a></li>
                 <li class="hidden-lg hidden-md"><a href="stockArticulos.jsp"><span class="fa fa-pie-chart" style=" display:inline; margin-right:10px;"></span>Stock</a></li>
                 <li class="hidden-lg hidden-md"><a href="pagos.jsp"><span class="fa fa-dollar" style=" display:inline; margin-right:10px;"></span>Pagos</a></li>
                 <li class="hidden-lg hidden-md"><a href="cobros.jsp"><span class="fa fa-money" style=" display:inline; margin-right:10px;"></span>Cobros</a></li>
@@ -88,7 +88,7 @@
             <small style="color:rgba(216,216,216,1.00); margin-left:10px; padding-bottom:25px;">Consultas</small>
             <ul  class="menuLateral nav nav-pills nav-stacked" style=" margin:0px;">
                 <li><a href="listaprecios.jsp"><span class="fa fa-usd" style=" display:inline; margin-right:10px;"></span>Listas de precios</a></li>
-                <li><a href="#"><span class="fa fa-bar-chart" style=" display:inline; margin-right:10px;"></span>Balances</a></li>
+                <li><a href="balances.jsp"><span class="fa fa-bar-chart" style=" display:inline; margin-right:10px;"></span>Balances</a></li>
                 <li><a href="stockArticulos.jsp"><span class="fa fa-pie-chart" style=" display:inline; margin-right:10px;"></span>Stock</a></li>
                 <li><a href="pagos.jsp"><span class="fa fa-dollar" style=" display:inline; margin-right:10px;"></span>Pagos</a></li>
                 <li><a href="cobros.jsp"><span class="fa fa-money" style=" display:inline; margin-right:10px;"></span>Cobros</a></li>

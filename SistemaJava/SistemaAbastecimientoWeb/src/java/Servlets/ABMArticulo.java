@@ -77,14 +77,15 @@ public class ABMArticulo extends HttpServlet {
             try {
                 String descripcionArticulo = new String(request.getParameter("descripcionArticulo").getBytes("ISO-8859-1"), "UTF-8");
                 int idCalidad= Integer.parseInt(request.getParameter("calidad"));
-                double pesoEstimadoArticulo = Double.parseDouble(request.getParameter("pesoEstimadoArticulo"));
+               // double pesoEstimadoArticulo = Double.parseDouble(request.getParameter("pesoEstimadoArticulo"));
 
                 //String foto = new String(request.getParameter("foto").getBytes("ISO-8859-1"), "UTF-8");
                 Entidades.Articulo articulo = new Entidades.Articulo();
                 articulo.setIdArticulo(idArticulo);
                 articulo.setIdCalidad(idCalidad);
                 articulo.setDescripcionArticulo(descripcionArticulo);
-                articulo.setPesoEstimadoArticulo(pesoEstimadoArticulo);              
+               // articulo.setPesoEstimadoArticulo(pesoEstimadoArticulo);    
+               articulo.setPesoEstimadoArticulo(0);
                 if ("alta".equals(accion)) {
                     articulo.setEstadoArticulo("Activo");
                     con.altaArticulo(articulo);

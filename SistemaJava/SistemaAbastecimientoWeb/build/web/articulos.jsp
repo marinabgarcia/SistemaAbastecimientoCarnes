@@ -244,12 +244,12 @@
                                                 </div>
                                             </div>                                                     
                                         </div>
-                                        <div class="form-horizontal" style="">
+                                        <div class="form-horizontal" style="display: none">
                                             <div class="form-group" style="clear: both;">
                                                 <label for="pesoEstimado" class="col-sm-2 control-label">Peso Estimado:</label>
                                                 <div class="col-sm-10">
                                                     <div class="input-group">
-                                                        <input type="number" required class="form-control" id="pesoEstimadoArticulo" name="pesoEstimadoArticulo"/>
+                                                        <input type="number" value="100" class="form-control" id="pesoEstimadoArticulo" name="pesoEstimadoArticulo"/>
                                                         <span class="input-group-addon">kg</span>
                                                     </div>
                                                 </div>

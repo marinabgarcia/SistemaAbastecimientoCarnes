@@ -159,6 +159,10 @@
                                         {
                                             $(tipos.item(i)).addClass("label label-danger");
                                         }
+                                         if ($(tipos.item(i)).attr("name") == "Cerdo")
+                                        {
+                                            $(tipos.item(i)).addClass("label label-default");
+                                        }
                                     }
                              
                                     var datos = $('#gridArticulos').bootgrid().data('.rs.jquery.bootgrid').currentRows;

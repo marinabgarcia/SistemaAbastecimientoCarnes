@@ -10,6 +10,7 @@
      articulo.`idArticulo` AS articulo_idArticulo,
      articulo.`descripcionArticulo` AS articulo_descripcionArticulo,
      articulo.`stockUnidad` AS articulo_stockUnidad,
+      articulo.`stockPeso` AS articulo_stockPeso,
      articulo.`estadoArticulo` AS articulo_estadoArticulo,
      articulo.`pesoEstimadoArticulo` AS articulo_pesoEstimadoArticulo,
      articulo.`idCalidad` AS articulo_idCalidad,
@@ -18,13 +19,15 @@
      preciosventa.`fechaHasta` AS preciosventa_fechaHasta,
      preciosventa.`idTipoCliente` AS preciosventa_idTipoCliente,
      preciosventa.`montoPrecioVenta` AS preciosventa_montoPrecioVenta ,
-    ( preciosventa.`montoPrecioVenta`* articulo.`stockUnidad`* articulo.`pesoEstimadoArticulo`) AS articulo
+    ( preciosventa.`montoPrecioVenta`* articulo.`stockPeso`) AS articulo
 FROM
-     `articulo` articulo INNER JOIN `preciosventa` preciosventa ON articulo.`idArticulo` = preciosventa.`idArticulo`]]>
+     `articulo` articulo LEFT JOIN `preciosventa` preciosventa ON articulo.`idArticulo` = preciosventa.`idArticulo`
+     WHERE preciosventa.`idTipoCliente`= 1 AND preciosventa.`fechaHasta`IS NULL]]>
 	</queryString>
 	<field name="articulo_idArticulo" class="java.lang.Integer"/>
 	<field name="articulo_descripcionArticulo" class="java.lang.String"/>
 	<field name="articulo_stockUnidad" class="java.lang.Long"/>
+	<field name="articulo_stockPeso" class="java.lang.Double"/>
 	<field name="articulo_estadoArticulo" class="java.lang.String"/>
 	<field name="articulo_pesoEstimadoArticulo" class="java.lang.Double"/>
 	<field name="articulo_idCalidad" class="java.lang.Integer"/>
@@ -44,24 +47,31 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<columnFooter>
-		<band height="87" splitType="Stretch">
+		<band height="154" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="2d548758-a451-4d73-ad39-9aef6974df47" x="0" y="20" width="124" height="20"/>
+				<reportElement uuid="2d548758-a451-4d73-ad39-9aef6974df47" x="0" y="90" width="124" height="20" forecolor="#000000"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Mercaderia en Stock]]></text>
 			</staticText>
 			<textField pattern="¤ #,##0.00">
-				<reportElement uuid="18681c3c-e998-43a6-8678-2df016c0089b" x="365" y="20" width="100" height="20"/>
+				<reportElement uuid="18681c3c-e998-43a6-8678-2df016c0089b" x="435" y="90" width="100" height="20" forecolor="#000000"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{stock}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement uuid="68ee8ed0-79c8-450c-94d7-929a3bbfdf0a" x="124" y="39" width="241" height="1"/>
+				<reportElement uuid="68ee8ed0-79c8-450c-94d7-929a3bbfdf0a" x="124" y="110" width="311" height="1"/>
 			</line>
+			<staticText>
+				<reportElement uuid="960028f8-b986-4fb3-9a74-78b1745ac906" x="216" y="22" width="133" height="43"/>
+				<textElement>
+					<font size="24" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[ACTIVO]]></text>
+			</staticText>
 		</band>
 	</columnFooter>
 </jasperReport>

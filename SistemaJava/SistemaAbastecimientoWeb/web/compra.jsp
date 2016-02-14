@@ -95,7 +95,7 @@
                             <tr>
                                 <th data-column-id="cuitProveedor"  data-type="numeric" data-sortable="true">Cuit Proveedor</th>
                                 <th data-column-id="proveedor" data-sortable="false">Proveedor</th>
-                                <th data-column-id="idCompra" data-formatter="idCompra" data-identifier="true" data-type="numeric" data-sortable="false">Id Compra</th>
+                                <th data-column-id="idCompraS" data-formatter="idCompra" data-type="string" data-identifier="true" data-sortable="false">Id Compra</th>
                                 <th data-column-id="precioTotalCompraCalculado" data-formatter="precioCalculado" data-sortable="false">Total</th>
                                 <th data-column-id="precioTotalCompra" data-formatter="precio" data-sortable="false">Total Remito</th>
                                 <th data-column-id="fechaEntregaCompraS" data-order="desc" data-sortable="true">Fecha Entrega</th>
@@ -1085,7 +1085,7 @@
                                             "idCompra"
                                                     : function (column, row)
                                                     {
-                                                        return "<span id=\"" + row.fechaEntregaCompraS + row.horaEntregaCompraS + "\"class=\"\">" + row.idCompra + "</span>";
+                                                        return "<span id=\"" + row.fechaEntregaCompraS + row.horaEntregaCompraS + "\"class=\"\">" + row.idCompraS + "</span>";
                                                     }
                                         }
                                     }).on("loaded.rs.jquery.bootgrid", function (e)
@@ -1148,7 +1148,7 @@
                                         {
                                             row = selectedRows[i];
                                             //alert(row.idCompra);
-                                            seleccion = row.idCompra;
+                                            seleccion = row.idCompraS;
                                         }
                                     }).on("deselected.rs.jquery.bootgrid", function (e, deselectedRows)
                                     {
@@ -1631,7 +1631,7 @@
                     var row;
                     for (var i = 0; i < datos.length; i++)
                     {
-                        if (datos[i].idCompra == seleccion)
+                        if (datos[i].idCompraS == seleccion)
                         {
                             row = datos[i];
                         }
@@ -1639,7 +1639,7 @@
                     document.getElementById("cuitProveedor").value = row.cuitProveedor;
                     document.getElementById("cuitProveedor").readOnly = true;
                     document.getElementById("cuitProveedor1").value = row.cuitProveedor;
-                    document.getElementById("idCompra").value = row.idCompra;
+                    document.getElementById("idCompra").value = row.idCompraS;
                     document.getElementById("divIdCompra").style.display = "inline";
                     document.getElementById("nroFacturaCompra").value = row.nroFacturaCompra;
                     document.getElementById("nroFacturaCompra").readOnly = true;
@@ -1727,7 +1727,7 @@
                     var totalPagado = 0;
                     for (var i = 0; i < datos.length; i++)
                     {
-                        if (datos[i].idCompra == seleccion)
+                        if (datos[i].idCompraS == seleccion)
                         {
                             row = datos[i];
                         }
@@ -1742,7 +1742,7 @@
                     document.getElementById("fechaPago").value = f.getFullYear() + "-" + mes + "-" + dia;
                     document.getElementById("horaPago").value = horas + ":" + minutos + ":" + segundos;
                     document.getElementById("cuitProveedorP").value = row.cuitProveedor;
-                    document.getElementById("idCompraP").value = row.idCompra;
+                    document.getElementById("idCompraP").value = row.idCompraS;
                     document.getElementById("nroFacturaCompraP").value = row.nroFacturaCompra;
                     document.getElementById("nroRemitoCompraP").value = row.nroRemitoCompra;
                     document.getElementById("fechaHoyP").value = (row.fechaEntregaCompraS);
@@ -1850,7 +1850,7 @@
                         document.formPago.montoPago.setAttribute("max", Math.round((precioTotalCompra - totalPagado) * 100) / 100);
                         var datos = $('#grid3').bootgrid().data('.rs.jquery.bootgrid').currentRows;
                         for (var i = 0; i < datos.length; i++) {
-                            if (datos[i].idCompra == seleccion) {
+                            if (datos[i].idCompraS == seleccion) {
                                 row = datos[i];
                             }
                         }
@@ -1881,13 +1881,13 @@
                     var row;
                     for (var i = 0; i < datos.length; i++)
                     {
-                        if (datos[i].idCompra == seleccion)
+                        if (datos[i].idCompraS == seleccion)
                         {
                             row = datos[i];
                         }
                     }
                     document.getElementById("cuitProveedorE").value = row.cuitProveedor;
-                    document.getElementById("idCompraE").value = row.idCompra;
+                    document.getElementById("idCompraE").value = row.idCompraS;
                     document.getElementById("fechaHoyE").value = (row.fechaEntregaCompraS);
                     document.getElementById("horaHoyE").value = row.horaEntregaCompraS;
                     $('#ventanaEliminar').modal('show');
@@ -1920,13 +1920,13 @@
                     var row;
                     for (var i = 0; i < datos.length; i++)
                     {
-                        if (datos[i].idCompra == seleccion)
+                        if (datos[i].idCompraS == seleccion)
                         {
                             row = datos[i];
                         }
                     }
 
-                    document.getElementById("idCompra").value = row.idCompra;
+                    document.getElementById("idCompra").value = row.idCompraS;
                     document.getElementById("divIdCompra").style.display = "inline";
                     document.getElementById("datosCompra").style.display = "none";
                     document.getElementById("datosProveedor").style.display = "none";

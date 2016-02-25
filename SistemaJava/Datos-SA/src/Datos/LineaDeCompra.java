@@ -170,7 +170,7 @@ public class LineaDeCompra {
 
             conectar();
             // the mysql insert statement
-            String query = "UPDATE lineadeCompra SET cantidadFraccionada = ? WHERE idLineaCompra = ?";
+            String query = "UPDATE lineadecompra SET cantidadFraccionada = ? WHERE idLineaCompra = ?";
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = conexion.prepareStatement(query);
 
@@ -196,7 +196,7 @@ public class LineaDeCompra {
 
     public int obtenerUltimaFraccion(long idLineaCompra) throws SQLException, ClassNotFoundException {
         conectar();
-        String query2 = "select cantidadFraccionada from lineadeCompra where idLineaCompra=?";
+        String query2 = "select cantidadFraccionada from lineadecompra where idLineaCompra=?";
         PreparedStatement preparedStmt2 = conexion.prepareStatement(query2);
         preparedStmt2.setLong(1, idLineaCompra);
         ResultSet rs = preparedStmt2.executeQuery();

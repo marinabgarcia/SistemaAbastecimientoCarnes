@@ -75,7 +75,7 @@ public class LineaDeVenta {
 
                 Entidades.LineaDeVenta listap = new Entidades.LineaDeVenta();
                 listap = listaLinea.get(i);
-                String query = " insert into lineadeVenta (idLineaVenta,cantidadLineaVenta,observacionLineaVenta,precioLineaVenta,pesoLineaVenta,idArticulo,idVenta)" + " values (?,?,?,?,?,?,?)";
+                String query = " insert into lineadeventa (idLineaVenta,cantidadLineaVenta,observacionLineaVenta,precioLineaVenta,pesoLineaVenta,idArticulo,idVenta)" + " values (?,?,?,?,?,?,?)";
 
                 // create the mysql insert preparedstatement
                 PreparedStatement preparedStmt = conexion.prepareStatement(query);

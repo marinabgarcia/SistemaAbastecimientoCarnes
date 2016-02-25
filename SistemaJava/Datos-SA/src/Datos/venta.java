@@ -103,7 +103,7 @@ public class venta {
             // execute the preparedstatement
          
             preparedStmt.execute();
-            String query2="select cuentaCorrienteCliente from Cliente where dniCliente=?";
+            String query2="select cuentaCorrienteCliente from cliente where dniCliente=?";
                     PreparedStatement preparedStmt2 = conexion.prepareStatement(query2);
                     preparedStmt2.setLong(1,venta.getDniCliente() );
                     ResultSet rs =preparedStmt2.executeQuery();
@@ -114,7 +114,7 @@ public class venta {
                     Double cuentaCorriente=cuenta+venta.getPrecioTotalVenta();
          
                 // the mysql insert statement
-                String query3= "UPDATE Cliente SET cuentaCorrienteCliente = ? WHERE dniCliente = ?";
+                String query3= "UPDATE cliente SET cuentaCorrienteCliente = ? WHERE dniCliente = ?";
 
                 // create the mysql insert preparedstatement
                 PreparedStatement preparedStmt3 = conexion.prepareStatement(query3);

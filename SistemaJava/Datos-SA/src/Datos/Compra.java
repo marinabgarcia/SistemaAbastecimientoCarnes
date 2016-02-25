@@ -101,7 +101,7 @@ public class Compra {
             // execute the preparedstatement
             preparedStmt.execute();
 
-            String query2 = "select cuentaCorrienteProveedor from Proveedor where cuitProveedor=?";
+            String query2 = "select cuentaCorrienteProveedor from proveedor where cuitProveedor=?";
             PreparedStatement preparedStmt2 = conexion.prepareStatement(query2);
             preparedStmt2.setLong(1, compra.getCuitProveedor());
             ResultSet rs = preparedStmt2.executeQuery();
@@ -111,7 +111,7 @@ public class Compra {
                 Double cuentaCorriente = cuenta - compra.getPrecioTotalCompra();
 
                 // the mysql insert statement
-                String query3 = "UPDATE Proveedor SET cuentaCorrienteProveedor = ? WHERE cuitProveedor = ?";
+                String query3 = "UPDATE proveedor SET cuentaCorrienteProveedor = ? WHERE cuitProveedor = ?";
 
                 // create the mysql insert preparedstatement
                 PreparedStatement preparedStmt3 = conexion.prepareStatement(query3);
@@ -250,6 +250,7 @@ public class Compra {
             while (rs.next()) {
                 Entidades.Compra compra = new Entidades.Compra();
                 compra.setIdCompra(rs.getLong("idCompra"));
+                compra.setIdCompraS(rs.getString("idCompra"));
                 compra.setCuitProveedor(rs.getLong("cuitProveedor"));
                 compra.setDniUsuario(rs.getLong("dniUsuario"));
                 compra.setPrecioTotalCompraCalculado(rs.getDouble("precioTotalCompraCalculado"));

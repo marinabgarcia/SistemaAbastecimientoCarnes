@@ -36,6 +36,7 @@ public class Compra {
     private long dniUsuario;
     private ArrayList<Entidades.LineaDeCompra> lineasCompra;
     private String proveedor;
+    private String idCompraS;
 
     /**
      * @return the idCompra
@@ -329,6 +330,20 @@ public class Compra {
      */
     public void setProveedor(String proveedor) {
         this.proveedor = proveedor;
+    }
+
+    /**
+     * @return the idCompraS
+     */
+    public String getIdCompraS() {
+        return idCompraS;
+    }
+
+    /**
+     * @param idCompraS the idCompraS to set
+     */
+    public void setIdCompraS(String idCompraS) {
+        this.idCompraS = idCompraS;
     }
     
     

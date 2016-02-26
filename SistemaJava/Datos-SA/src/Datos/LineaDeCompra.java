@@ -97,7 +97,7 @@ public class LineaDeCompra {
                 while (rs.next()) {
                     double stock = rs.getDouble("stockPeso");
                     //sumar cantidad de linea de compra no 1
-                    double stockNuevo = Math.round(stock + listap.getPesoLineaCompra());
+                    double stockNuevo = Math.round((stock + listap.getPesoLineaCompra()) * Math.pow(10, 2)) / Math.pow(10, 2);
                     String query3 = "update articulo set stockPeso=? where idArticulo=?";
                     PreparedStatement preparedStmt3 = conexion.prepareStatement(query3);
                     preparedStmt3.setDouble(1, stockNuevo);

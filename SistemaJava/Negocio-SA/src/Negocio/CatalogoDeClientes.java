@@ -44,4 +44,8 @@ public class CatalogoDeClientes {
     public int obtenerCantidadClientes() throws SQLException, ClassNotFoundException {
         return clienteDatos.obtenerCantidadClientes();
     }
+    
+    public Entidades.Cliente getOneCliente(Long dni) throws Exception{
+        return clienteDatos.getOne(dni);
+    }
 }

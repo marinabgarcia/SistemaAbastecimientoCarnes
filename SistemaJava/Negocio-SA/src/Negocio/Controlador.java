@@ -147,6 +147,11 @@ public class Controlador {
     public int obtenerCantidadClientes() throws SQLException, ClassNotFoundException {
         return cdc.obtenerCantidadClientes();
     }
+    
+    public Entidades.Cliente getOneCliente(Long dniCliente) throws Exception
+    {
+        return cdc.getOneCliente(dniCliente);
+    }
 
     //-------------ABM ARTICULO---------------------------
 
@@ -331,7 +336,7 @@ public class Controlador {
         return cdf.getAllFraccionamientos(sortname, sortorder, search, idCompra);
     }
 
-    public ArrayList<LineaDeVenta> agregarLineaVenta(long dniUsuario, long idCliente, int porcentaje, String nroRemito, String nroFactura, ArrayList<LineaDeVenta> listaLinea, Date fechaHoy, Time horaHoy) throws SQLException, ClassNotFoundException, Exception {
+    public long agregarLineaVenta(long dniUsuario, long idCliente, int porcentaje, String nroRemito, String nroFactura, ArrayList<LineaDeVenta> listaLinea, Date fechaHoy, Time horaHoy) throws SQLException, ClassNotFoundException, Exception {
         long numero = idCliente % 1000;
         String concatenado = "" + fechaHoy.toString().replace("-", "") + horaHoy.toString().replace(":", "") + numero + "";
         idVenta = Long.parseLong(concatenado);
@@ -359,7 +364,7 @@ public class Controlador {
         //ir a guardar la compra
         cdventa.guardarVenta(dniUsuario, idVenta, idCliente, nroRemito, nroFactura, precioTotalVentaCalculado, fechaHoy, horaHoy);
         cdlventa.nuevaLineaVenta(listaLinea);
-        return listaLinea;
+        return idVenta;
 
     }
 

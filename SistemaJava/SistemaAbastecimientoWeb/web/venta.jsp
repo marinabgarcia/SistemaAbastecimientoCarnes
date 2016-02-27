@@ -575,7 +575,7 @@
                                         setTimeout(function () {
                                             $('#agregarVentana').modal('show')
                                         }, 700);">Volver</button> 
-                                <button type="submit" class="btn btn-danger">Aceptar</button>
+                                <button id="botonConfirmar" type="submit" class="btn btn-danger">Aceptar</button>
                             </div>
                         </form>
                     </div>
@@ -1061,7 +1061,7 @@
 
         </div>
         <div style="display:none">
-            <form id='remito' method='post' action="Remito">
+            <form id='remito' method='post' action="Remito" target="_blank">
                 <input type='text' name='idVentaRemito' id='idVentaRemito'>
                 <input type='text' name='copiaRemito' id='copiaRemito'>
             </form>
@@ -1547,6 +1547,7 @@
                 /* var f = new Date();
                  fechaHoy = f.getFullYear() + "-" + (f.getMonth() + 1) + "-" + f.getDate();
                  horaHoy = f.getHours() + ":" + f.getMinutes() + ":" + f.getSeconds();*/
+                document.getElementById("botonConfirmar").disabled = true;
                 var f = new Date();
                 dia = (String(f.getDate())).length == 1 ? '0' + (f.getDate()) : (f.getDate());
                 mes = (String(f.getMonth() + 1)).length == 1 ? '0' + (f.getMonth() + 1) : (f.getMonth() + 1);
@@ -1556,7 +1557,7 @@
                 fechaHoy = f.getFullYear() + "-" + mes + "-" + dia;
                 horaHoy = horas + ":" + minutos + ":" + segundos;
                 $.post('venta', {dniCliente: document.getElementById('dniCliente').value, nroFacturaVenta: document.getElementById('nroFacturaVenta').value, nroRemitoVenta: document.getElementById('nroRemitoVenta').value, fechaHoy: fechaHoy, horaHoy: horaHoy, datosLineas: '{\"datos\":' + JSON.stringify(datosLineaVenta) + '}', totalVentaCalculado: totalCompra}, function (rta) {
-                    if (rta === "")
+                    if ($.isNumeric(rta))
                     {
                         $("#grid3").bootgrid('reload');
                         var filas = document.getElementsByTagName('tr');
@@ -1572,8 +1573,7 @@
                         setTimeout(function () {
                             $(filas.item(1)).removeClass("success")
                         }, 5000);
-                        var datos = $('#grid3').bootgrid().data('.rs.jquery.bootgrid').currentRows;
-                        document.getElementById("idVentaRemito").value = datos[0].idVentaS;
+                        document.getElementById("idVentaRemito").value = rta;
                         document.getElementById("copiaRemito").value = 1;
                         document.getElementById("remito").submit();
                     }
@@ -1590,6 +1590,7 @@
             }
             function btnAgregarOnclick()
             {
+                document.getElementById("botonConfirmar").disabled = false;
                 var f = new Date();
                 dia = (String(f.getDate())).length == 1 ? '0' + (f.getDate()) : (f.getDate());
                 mes = (String(f.getMonth() + 1)).length == 1 ? '0' + (f.getMonth() + 1) : (f.getMonth() + 1);
@@ -1663,95 +1664,91 @@
                         }
                     }
                     document.getElementById("dniCliente").value = row.dniCliente;
-                    var datosClientes = $('#gridClientes').bootgrid().data('.rs.jquery.bootgrid').currentRows;
                     var rowCliente;
-                    for (var i = 0; i < datosClientes.length; i++)
-                    {
-                        if (datosClientes[i].dniCliente == row.dniCliente)
-                        {
-                            rowCliente = datosClientes[i];
-                        }
-                    }
-                    document.getElementById("nombreCliente").value = rowCliente.nombreCliente;
-                    document.getElementById("apellidoCliente").value = rowCliente.apellidoCliente;
-                    document.getElementById("razonSocialCliente").value = rowCliente.razonSocialCliente;
-                    document.getElementById("idTipoCliente").value = rowCliente.idTipoCliente;
-                    document.getElementById("tipoCliente").value = rowCliente.dTipoCliente;
-                    //document.getElementById("dniCliente1").value = row.dniCliente;
-                    document.getElementById("idVenta").value = row.idVentaS;
-                    document.getElementById("divIdVenta").style.display = "inline";
-                    document.getElementById("nroFacturaVenta").value = row.nroFacturaVenta;
-                    document.getElementById("nroFacturaVenta").readOnly = true;
-                    document.getElementById("nroRemitoVenta").value = row.nroRemitoVenta;
-                    document.getElementById("nroRemitoVenta").readOnly = true;
-                    document.getElementById("fechaHoy").value = (row.fechaVentaS);
-                    document.getElementById("fechaHoy").readOnly = true;
-                    document.getElementById("horaHoy").value = row.horaVentaS;
-                    document.getElementById("horaHoy").readOnly = true;
-                    document.getElementById("fechaVencimientoVenta").value = row.fechaVencimientoVentaS;
-                    document.getElementById("divFechaVencimientoVenta").style.display = "inline";
-                    document.getElementById("fechaUCobroVenta").value = row.fechaUCobroVentaS;
-                    document.getElementById("divFechaUCobroVenta").style.display = "inline";
-                    document.getElementById("horaUCobroVenta").value = row.horaUCobroVentaS;
-                    document.getElementById("divHoraUCobroVenta").style.display = "inline";
-                    document.getElementById("fechaEntregaVenta").value = row.fechaEntregaVentaS;
-                    document.getElementById("divFechaEntregaVenta").style.display = "inline";
-                    document.getElementById("horaEntregaVenta").value = row.horaEntregaVentaS;
-                    document.getElementById("divHoraEntregaVenta").style.display = "inline";
-                    document.getElementById("estadoVenta").value = row.estadoVenta;
-                    document.getElementById("divEstadoVenta").style.display = "inline";
-                    document.getElementById("totalVentaCalculado").value = row.precioTotalVenta;
-                    document.getElementById("divAgregarArticulo").style.display = "none";
-                    document.getElementById("btnGuardarVenta").style.display = "none";
-                    document.getElementById("datosVenta").style.display = "inline";
-                    document.getElementById("datosProveedor").style.display = "inline";
-                    $("#grid2").bootgrid("destroy");
-                    var grid2 = $("#grid2").bootgrid({
-                        ajax: true,
-                        post: function ()
-                        {
-                            return {
-                                idVenta: document.getElementById('idVenta').value
+                    var datosClientes = $('#gridClientes').bootgrid().data('.rs.jquery.bootgrid').currentRows;
+                    $.post('cargarCliente', {dniCliente: row.dniCliente}, function (rta) {
+                        rowCliente = rta.split('-');
+                        document.getElementById("nombreCliente").value =  rowCliente[1];
+                        document.getElementById("apellidoCliente").value = rowCliente[2];
+                        document.getElementById("razonSocialCliente").value = rowCliente[3];
+                        document.getElementById("idTipoCliente").value = rowCliente[4];
+                        document.getElementById("tipoCliente").value = rowCliente[5];
+                        //document.getElementById("dniCliente1").value = row.dniCliente;
+                        document.getElementById("idVenta").value = row.idVentaS;
+                        document.getElementById("divIdVenta").style.display = "inline";
+                        document.getElementById("nroFacturaVenta").value = row.nroFacturaVenta;
+                        document.getElementById("nroFacturaVenta").readOnly = true;
+                        document.getElementById("nroRemitoVenta").value = row.nroRemitoVenta;
+                        document.getElementById("nroRemitoVenta").readOnly = true;
+                        document.getElementById("fechaHoy").value = (row.fechaVentaS);
+                        document.getElementById("fechaHoy").readOnly = true;
+                        document.getElementById("horaHoy").value = row.horaVentaS;
+                        document.getElementById("horaHoy").readOnly = true;
+                        document.getElementById("fechaVencimientoVenta").value = row.fechaVencimientoVentaS;
+                        document.getElementById("divFechaVencimientoVenta").style.display = "inline";
+                        document.getElementById("fechaUCobroVenta").value = row.fechaUCobroVentaS;
+                        document.getElementById("divFechaUCobroVenta").style.display = "inline";
+                        document.getElementById("horaUCobroVenta").value = row.horaUCobroVentaS;
+                        document.getElementById("divHoraUCobroVenta").style.display = "inline";
+                        document.getElementById("fechaEntregaVenta").value = row.fechaEntregaVentaS;
+                        document.getElementById("divFechaEntregaVenta").style.display = "inline";
+                        document.getElementById("horaEntregaVenta").value = row.horaEntregaVentaS;
+                        document.getElementById("divHoraEntregaVenta").style.display = "inline";
+                        document.getElementById("estadoVenta").value = row.estadoVenta;
+                        document.getElementById("divEstadoVenta").style.display = "inline";
+                        document.getElementById("totalVentaCalculado").value = row.precioTotalVenta;
+                        document.getElementById("divAgregarArticulo").style.display = "none";
+                        document.getElementById("btnGuardarVenta").style.display = "none";
+                        document.getElementById("datosVenta").style.display = "inline";
+                        document.getElementById("datosProveedor").style.display = "inline";
+                        $("#grid2").bootgrid("destroy");
+                        var grid2 = $("#grid2").bootgrid({
+                            ajax: true,
+                            post: function ()
+                            {
+                                return {
+                                    idVenta: document.getElementById('idVenta').value
 
-                            };
-                        },
-                        url: "cargarTablaLineasVenta",
-                        formatters: {
-                            "link": function (column, row)
-                            {
-                                return "<a href=\"#\">" + column.id + ": " + row.id + "</a>";
+                                };
                             },
-                            "precio": function (column, row)
-                            {
-                                return "<span class=\"label label-default\">$ " + row.precioVenta + "</span>";
+                            url: "cargarTablaLineasVenta",
+                            formatters: {
+                                "link": function (column, row)
+                                {
+                                    return "<a href=\"#\">" + column.id + ": " + row.id + "</a>";
+                                },
+                                "precio": function (column, row)
+                                {
+                                    return "<span class=\"label label-default\">$ " + row.precioVenta + "</span>";
+                                }
+                                , "precioLinea"
+                                        : function (column, row)
+                                        {
+                                            return "<span class=\"label label-default\">$ " + row.precioLineaVenta + "</span>";
+                                        }
+                                ,
+                                "peso"
+                                        : function (column, row)
+                                        {
+                                            return "<span class=\"\"> " + row.pesoLineaVenta + " kg</span>";
+                                        }
+                                , "unidad"
+                                        : function (column, row)
+                                        {
+                                            return "<span class=\"\"> " + row.cantidadLineaVenta + " u</span>";
+                                        },
                             }
-                            , "precioLinea"
-                                    : function (column, row)
-                                    {
-                                        return "<span class=\"label label-default\">$ " + row.precioLineaVenta + "</span>";
-                                    }
-                            ,
-                            "peso"
-                                    : function (column, row)
-                                    {
-                                        return "<span class=\"\"> " + row.pesoLineaVenta + " kg</span>";
-                                    }
-                            , "unidad"
-                                    : function (column, row)
-                                    {
-                                        return "<span class=\"\"> " + row.cantidadLineaVenta + " u</span>";
-                                    },
-                        }
-                    }).on("loaded.rs.jquery.bootgrid", function (e)
-                    {
-                        grid2.find(".command-delete").on("click", function (e)
+                        }).on("loaded.rs.jquery.bootgrid", function (e)
                         {
-                            borrar($(this).data("row-id"));
-                        });
+                            grid2.find(".command-delete").on("click", function (e)
+                            {
+                                borrar($(this).data("row-id"));
+                            });
+                        })
+                        setTimeout(function () {
+                            $('#agregarVentana').modal('toggle');
+                        }, 200);
                     })
-                    setTimeout(function () {
-                        $('#agregarVentana').modal('toggle');
-                    }, 200);
                 }
                 else
                 {
@@ -1783,87 +1780,84 @@
                     document.getElementById("horaPago").value = horas + ":" + minutos + ":" + segundos;
                     //cargar info clientes
                     document.getElementById("dniCliente").value = row.dniCliente;
-                    var datosClientes = $('#gridClientes').bootgrid().data('.rs.jquery.bootgrid').currentRows;
                     var rowCliente;
-                    for (var i = 0; i < datosClientes.length; i++)
-                    {
-                        if (datosClientes[i].dniCliente == row.dniCliente)
+                    $.post('cargarCliente', {dniCliente: row.dniCliente}, function (rta) {
+                        rowCliente = rta.split('-');
+                        document.getElementById("dniClienteP").value = rowCliente[0];
+                        document.getElementById("nombreClienteP").value = rowCliente[1];
+                        document.getElementById("apellidoClienteP").value = rowCliente[2];
+                        document.getElementById("razonSocialClienteP").value = rowCliente[3];
+                        document.getElementById("idTipoClienteP").value = rowCliente[4];
+                        document.getElementById("tipoClienteP").value = rowCliente[5];
+                        document.getElementById("idVentaP").value = row.idVentaS;
+                        document.getElementById("nroFacturaVentaP").value = row.nroFacturaVenta;
+                        document.getElementById("nroRemitoVentaP").value = row.nroRemitoVenta;
+                        document.getElementById("fechaHoyP").value = (row.fechaVentaS);
+                        document.getElementById("fechaEntregaVentaP").value = (row.fechaEntregaVentaS);
+                        document.getElementById("horaHoyP").value = row.horaVentaS;
+                        document.getElementById("horaEntregaVentaP").value = row.horaEntregaVentaS;
+                        document.getElementById("fechaVencimientoVentaP").value = row.fechaVencimientoVentaS;
+                        document.getElementById("fechaUCobroVentaP").value = row.fechaUCobroVentaS;
+                        document.getElementById("horaUCobroVentaP").value = row.horaUCobroVentaS;
+                        document.getElementById("estadoVentaP").value = row.estadoVenta;
+                        if (row.estadoVenta == "Pagado")
                         {
-                            rowCliente = datosClientes[i];
+                            document.getElementById("btnNuevoPago").disabled = true;
                         }
-                    }
-                    document.getElementById("dniClienteP").value = rowCliente.dniCliente;
-                    document.getElementById("nombreClienteP").value = rowCliente.nombreCliente;
-                    document.getElementById("apellidoClienteP").value = rowCliente.apellidoCliente;
-                    document.getElementById("razonSocialClienteP").value = rowCliente.razonSocialCliente;
-                    document.getElementById("idTipoClienteP").value = rowCliente.idTipoCliente;
-                    document.getElementById("tipoClienteP").value = rowCliente.dTipoCliente;
-                    document.getElementById("idVentaP").value = row.idVentaS;
-                    document.getElementById("nroFacturaVentaP").value = row.nroFacturaVenta;
-                    document.getElementById("nroRemitoVentaP").value = row.nroRemitoVenta;
-                    document.getElementById("fechaHoyP").value = (row.fechaVentaS);
-                    document.getElementById("fechaEntregaVentaP").value = (row.fechaEntregaVentaS);
-                    document.getElementById("horaHoyP").value = row.horaVentaS;
-                    document.getElementById("horaEntregaVentaP").value = row.horaEntregaVentaS;
-                    document.getElementById("fechaVencimientoVentaP").value = row.fechaVencimientoVentaS;
-                    document.getElementById("fechaUCobroVentaP").value = row.fechaUCobroVentaS;
-                    document.getElementById("horaUCobroVentaP").value = row.horaUCobroVentaS;
-                    document.getElementById("estadoVentaP").value = row.estadoVenta;
-                    if (row.estadoVenta == "Pagado")
-                    {
-                        document.getElementById("btnNuevoPago").disabled = true;
-                    }
-                    else
-                    {
-                        document.getElementById("btnNuevoPago").disabled = false;
-                    }
-                    document.getElementById("montoPago").value = "";
-                    document.getElementById("nroCheque").value = "";
-                    document.getElementById("bancoCheque").value = "";
-                    document.getElementById("nombreCheque").value = "";
-                    $("#gridPagos").bootgrid("destroy");
-                    var grid2 = $("#gridPagos").bootgrid({
-                        ajax: true,
-                        post: function ()
+                        else
                         {
-                            return {
-                                idTransaccion: document.getElementById('idVentaP').value
-
-                            };
-                        },
-                        url: "cargarTablaPagos", formatters: {
-                            "link": function (column, row)
+                            document.getElementById("btnNuevoPago").disabled = false;
+                        }
+                        document.getElementById("montoPago").value = "";
+                        document.getElementById("nroCheque").value = "";
+                        document.getElementById("bancoCheque").value = "";
+                        document.getElementById("nombreCheque").value = "";
+                        $("#gridPagos").bootgrid("destroy");
+                        var grid2 = $("#gridPagos").bootgrid({
+                            ajax: true,
+                            rowCount: -1,
+                            post: function ()
                             {
-                                return "<a href=\"#\">" + column.id + ": " + row.id + "</a>";
+                                return {
+                                    idTransaccion: document.getElementById('idVentaP').value
+
+                                };
                             },
-                            "precio": function (column, row)
-                            {
-                                return "<span class=\"label label-default\">$ " + row.montoPago + "</span>";
-                            }
+                            url: "cargarTablaPagos", formatters: {
+                                "link": function (column, row)
+                                {
+                                    return "<a href=\"#\">" + column.id + ": " + row.id + "</a>";
+                                },
+                                "precio": function (column, row)
+                                {
+                                    return "<span class=\"label label-default\">$ " + row.montoPago + "</span>";
+                                }
 
-                        }}).on("loaded.rs.jquery.bootgrid", function (e) {
-                        grid2.find(".command-delete").on("click", function (e) {
-                            borrar($(this).data("row-id"));
-                        });
-                    })
-                    setTimeout(function () {
-                        var datosPagos = $('#gridPagos').bootgrid().data('.rs.jquery.bootgrid').currentRows;
-                        for (var i = 0; i < datosPagos.length; i++)
-                        {
-                            totalPagado = totalPagado + datosPagos[i].montoPago;
-                        }
-                        document.getElementById("totalPagado").value = totalPagado;
-                        document.getElementById("totalCompraP").value = row.precioTotalVenta;
-                        document.getElementById("totalAdeudado").value = Math.round((row.precioTotalVenta - totalPagado) * 100) / 100;
-                        //$('[type="numeric"].montoPago').prop('max', Math.round((row.precioTotalCompra - totalPagado) * 100) / 100);
-                        document.formPago.montoPago.setAttribute("max", Math.round((row.precioTotalVenta - totalPagado) * 100) / 100);
-                    }, 300);
-                    $('#ventanaPagos').modal('toggle');
+                            }}).on("loaded.rs.jquery.bootgrid", function (e) {
+                            grid2.find(".command-delete").on("click", function (e) {
+                                borrar($(this).data("row-id"));
+                            });
+                        })
+                        setTimeout(function () {
+                            var datosPagos = $('#gridPagos').bootgrid().data('.rs.jquery.bootgrid').currentRows;
+                            for (var i = 0; i < datosPagos.length; i++)
+                            {
+                                totalPagado = totalPagado + datosPagos[i].montoPago;
+                            }
+                            document.getElementById("totalPagado").value = totalPagado;
+                            document.getElementById("totalCompraP").value = row.precioTotalVenta;
+                            document.getElementById("totalAdeudado").value = Math.round((row.precioTotalVenta - totalPagado) * 100) / 100;
+                            //$('[type="numeric"].montoPago').prop('max', Math.round((row.precioTotalCompra - totalPagado) * 100) / 100);
+                            document.formPago.montoPago.setAttribute("max", Math.round((row.precioTotalVenta - totalPagado) * 100) / 100);
+                        }, 300);
+                        $('#ventanaPagos').modal('toggle');
+                });
                 }
                 else
                 {
                     document.getElementById("alerta").style.display = "inline";
                 }
+               
             }
             function nuevoPago()
             {
@@ -2019,11 +2013,19 @@
             }
 
             function btnReimprimirOnclick()
-            {
+            {                 
                 if (seleccion != 0)
                 {
                     var datos = $('#grid3').bootgrid().data('.rs.jquery.bootgrid').currentRows;
-                    document.getElementById("idVentaRemito").value = datos[0].idVentaS;
+                    var row;
+                    for (var i = 0; i < datos.length; i++)
+                    {
+                        if (datos[i].idVentaS == seleccion)
+                        {
+                            row = datos[i];
+                        }
+                    }
+                    document.getElementById("idVentaRemito").value = row.idVentaS;
                     document.getElementById("copiaRemito").value = 1;
                     document.getElementById("remito").submit();
                 }
@@ -2054,9 +2056,9 @@
                         document.getElementById("descripcionArticulo").value = descripcionArticulo;
                         document.getElementById("calidadArticulo").value = descripcionCalidad;
                     }
-                    for (var i = 0; i < datosLineasCompra.length; i++)
+                    for (var i = 0; i < datosLineaVenta.length; i++)
                     {
-                        if (datosLineasCompra[i].idArticulo == document.getElementById("idArticulo").value)
+                        if (datosLineaVenta[i].idArticulo == document.getElementById("idArticulo").value)
                         {
                             document.getElementById("idArticulo").setCustomValidity("El articulo ya se registro");
                             break;
@@ -2091,74 +2093,6 @@
                 });
             }
 
-//            function cambiarDescripcion()
-//            {
-//                row=null;
-//                descripcionArticulo = 'null';
-//                document.getElementById("descripcionArticulo").value = "";
-//                document.getElementById("calidadArticulo").value = "";
-//                var datosArticulo = $('#grid').bootgrid().data('.rs.jquery.bootgrid').currentRows;
-//                for (var i = 0; i < datosArticulo.length; i++)
-//                {
-//                    if (datosArticulo[i].idArticulo == document.getElementById("idArticulo").value)
-//                    {
-//                        row = datosArticulo[i];
-//                    }
-//                }
-//                if (row.montoPrecioCompra == 0)
-//                {
-//                    document.getElementById("idArticulo").setCustomValidity("No se tiene registro de precio para este articulo para el tipo de cliente específicado");
-//                    descripcionArticulo = '';
-//                    precioVenta = 0;
-//                    descripcionCalidad = '';
-//                }
-//                else
-//                {
-//                    if (row.stockPeso > 0)
-//                    {
-//                        document.getElementById("idArticulo").setCustomValidity("");
-//                        document.getElementById("descripcionArticulo").value = row.descripcionArticulo;
-//                        descripcionArticulo = row.descripcionArticulo;
-//                        document.getElementById("calidadArticulo").value = row.descripcionCalidad;
-//                        descripcionCalidad = row.descripcionCalidad;
-//                        precioVenta = row.montoPrecioCompra;
-//                        stockUnidad = row.stockPeso;
-//                    }
-//                    else
-//                    {
-//                        document.getElementById("idArticulo").setCustomValidity("No hay stock disponible para la venta de este artículo.");
-//                        descripcionArticulo = '';
-//                        precioVenta = 0;
-//                        descripcionCalidad = '';
-//                    }
-//                }
-//                for (var i = 0; i < datosLineaVenta.length; i++)
-//                {
-//                    if (datosLineaVenta[i].idArticulo == document.getElementById("idArticulo").value)
-//                    {
-//                        document.getElementById("idArticulo").setCustomValidity("El articulo ya se registro");
-//                        break;
-//                    }
-//                    else
-//                    {
-//                        document.getElementById("idArticulo").setCustomValidity("");
-//                    }
-//
-//
-//                }
-//                if (row.montoPrecioCompra == 0)
-//                {
-//                    document.getElementById("idArticulo").setCustomValidity("No se tiene registro de precio para este articulo para el tipo de cliente específicado");
-//                }
-//                if (row.stockPeso <= 0)
-//                {
-//                    document.getElementById("idArticulo").setCustomValidity("No hay stock disponible para la venta de este artículo.");
-//                }
-//                 if (descripcionArticulo == "null")
-//                 {
-//                        document.getElementById("idArticulo").setCustomValidity("El proveedor no tiene registro de precio para este articulo");
-//                 }
-//            }
 
             function validarStock()
             {

@@ -104,8 +104,8 @@ public class venta extends HttpServlet {
             Entidades.Usuario usuarioConectado=(Entidades.Usuario) session.getAttribute("usuarioConectado");
             long dniUsuario = usuarioConectado.getDniUsuario();
             // trae el array del jsp
-            con.agregarLineaVenta(dniUsuario, dniCliente, porcentaje, nroRemitoVenta, nroFacturaVenta, listaArticulo, fechaHoy, horaHoy);
-            response.getWriter().write("");
+            Long idVenta = con.agregarLineaVenta(dniUsuario, dniCliente, porcentaje, nroRemitoVenta, nroFacturaVenta, listaArticulo, fechaHoy, horaHoy);
+            response.getWriter().write(idVenta.toString());
         } catch (Exception ex) {
             response.getWriter().write(ex.getMessage());
         }

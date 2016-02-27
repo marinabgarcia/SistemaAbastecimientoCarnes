@@ -73,6 +73,7 @@ public class recuperarDatosArticulo extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            response.setCharacterEncoding("UTF-8");
             Negocio.Controlador con=new Negocio.Controlador();
             int idArticulo=Integer.parseInt(request.getParameter("idArticulo"));
             Long cuitProveedor;

@@ -220,13 +220,17 @@
         <servlet-name>ImprimirLista</servlet-name>
         <servlet-class>Servlets.ImprimirLista</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>cambiarClave</servlet-name>
         <servlet-class>Servlets.cambiarClave</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>ImprimirBalance</servlet-name>
         <servlet-class>Servlets.ImprimirBalance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cargarCliente</servlet-name>
+        <servlet-class>FuncionalidadAdicional.cargarCliente</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ABMArticulo</servlet-name>
@@ -444,7 +448,7 @@
         <servlet-name>cerrarSesion</servlet-name>
         <url-pattern>/cerrarSesion</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ImprimirLista</servlet-name>
         <url-pattern>/ImprimirLista</url-pattern>
     </servlet-mapping>
@@ -452,9 +456,13 @@
         <servlet-name>cambiarClave</servlet-name>
         <url-pattern>/cambiarClave</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ImprimirBalance</servlet-name>
         <url-pattern>/ImprimirBalance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cargarCliente</servlet-name>
+        <url-pattern>/cargarCliente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

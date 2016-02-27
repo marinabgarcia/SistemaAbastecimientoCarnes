@@ -107,7 +107,7 @@ public class cargarTablaPagos extends HttpServlet {
             //personas = con.getPersonas(page, rp, sortname, sortorder, query);
             //JSONArray jArray = new JSONArray();
             ArrayList<Entidades.Pago> seleccion = new ArrayList<Entidades.Pago>();
-            if (pagos != null) {
+            if (pagos != null && rowCount!=-1) {
                 for (int i = (current - 1) * rowCount; i < ((current * rowCount > pagos.size()) ? pagos.size() : current * rowCount); i++) {
                     Entidades.Pago linea = pagos.get(i);
                     seleccion.add(linea);
@@ -116,6 +116,8 @@ public class cargarTablaPagos extends HttpServlet {
                     //jArray.add(jsonObj);
                 }
             }
+            else
+                seleccion=pagos;
             JSONObject jObj = new JSONObject();
             jObj.element("current", current);
             jObj.element("rowCount", rowCount);

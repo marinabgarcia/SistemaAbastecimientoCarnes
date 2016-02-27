@@ -89,7 +89,7 @@ public class cargarWidgets extends HttpServlet {
                 if (!com.getEstadoCompra().equals("Pagado"))
                 {
                     System.out.println("compra "+com.getPrecioTotalCompra());
-                    totalAdeudado=+Math.round(totalAdeudado+com.getPrecioTotalCompra());
+                    totalAdeudado=+Math.round(totalAdeudado+com.getPrecioTotalCompra()* Math.pow(10, 2)) / Math.pow(10, 2);
                     System.out.println("subtotal "+totalAdeudado);
                 }
             }
@@ -99,7 +99,7 @@ public class cargarWidgets extends HttpServlet {
                 Entidades.Venta com=ventas.get(i);
                 if (!com.getEstadoVenta().equals("Pagado"))
                 {
-                    totalPorCobrar=+Math.round(totalPorCobrar+com.getPrecioTotalVenta());
+                    totalPorCobrar=+Math.round(totalPorCobrar+com.getPrecioTotalVenta()* Math.pow(10, 2)) / Math.pow(10, 2);
                 }
             }
              HttpSession session = request.getSession(true);

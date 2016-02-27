@@ -418,4 +418,47 @@ public class Cliente {
         return 0;
 
     }
+     
+     public Entidades.Cliente getOne(Long dni)
+            throws SQLException, ClassNotFoundException, Exception {
+        try {
+            conectar();
+
+            String sql = "SELECT * FROM cliente cli inner join tipoCliente ti on ti.idTipoCliente=cli.idTipoCliente where dniCliente=?";
+ 
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setLong(1, dni);
+            ResultSet rs = ps.executeQuery();
+            Entidades.Cliente cliente = new Entidades.Cliente();
+            while (rs.next()) {
+                cliente.setDniCliente(rs.getLong("dniCliente"));
+                cliente.setCuitCliente(rs.getLong("cuitCliente"));
+                cliente.setRazonSocialCliente(rs.getString("razonSocialCliente"));
+                cliente.setEstadoCliente(rs.getString("estadoCliente"));
+                cliente.setIdTipoCliente(rs.getInt("idTipoCliente"));
+                cliente.setNombreCliente(rs.getString("nombreCliente"));
+                cliente.setApellidoCliente(rs.getString("apellidoCliente"));
+                cliente.setDireccionCliente(rs.getString("direccionCliente"));
+                cliente.setLocalidadCliente(rs.getInt("localidadCliente"));
+                cliente.setProvinciaCliente(rs.getInt("provinciaCliente"));
+                cliente.setTelefonoCliente(rs.getString("telefonoCliente"));
+                cliente.setCelularCliente(rs.getString("celularCliente"));
+                cliente.setEmailCliente(rs.getString("emailCliente"));
+                cliente.setdTipoCliente(rs.getString("descripcionTipoCliente"));
+            }
+            desconectar();
+            return cliente;
+
+        } catch (SQLException Ex) {
+
+            throw Ex;
+        } catch (Exception Ex) {
+            Exception ExcepcionManejada = new Exception("Error al recuperar clientes. Vuelva a intentarlo.", Ex);
+            throw ExcepcionManejada;
+        } finally {
+            desconectar();
+        }
+
+    }
+
 }

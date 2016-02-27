@@ -97,7 +97,7 @@ public class LineaDeVenta {
                 preparedStmt2.execute();
                 while (rs.next()) {
                     double stock = rs.getDouble("stockPeso");
-                    double stockNuevo = Math.round(stock - listap.getPesoLineaVenta()* Math.pow(10, 2)) / Math.pow(10, 2);
+                    double stockNuevo = Math.round((stock - listap.getPesoLineaVenta())* Math.pow(10, 2)) / Math.pow(10, 2);
                     String query3 = "update articulo set stockPeso=? where idArticulo=?";
                     PreparedStatement preparedStmt3 = conexion.prepareStatement(query3);
                     preparedStmt3.setDouble(1, stockNuevo);

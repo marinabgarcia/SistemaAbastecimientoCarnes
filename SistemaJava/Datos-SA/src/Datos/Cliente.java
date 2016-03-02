@@ -424,7 +424,7 @@ public class Cliente {
         try {
             conectar();
 
-            String sql = "SELECT * FROM cliente cli inner join tipoCliente ti on ti.idTipoCliente=cli.idTipoCliente where dniCliente=?";
+            String sql = "SELECT * FROM cliente cli inner join tipocliente ti on ti.idTipoCliente=cli.idTipoCliente where dniCliente=?";
  
             PreparedStatement ps = conexion.prepareStatement(sql);
             ps.setLong(1, dni);

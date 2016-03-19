@@ -1767,6 +1767,7 @@
                     $("#gridPagos").bootgrid("destroy");
                     var grid2 = $("#gridPagos").bootgrid({
                         ajax: true,
+                        rowCount: -1,
                         post: function ()
                         {
                             return {

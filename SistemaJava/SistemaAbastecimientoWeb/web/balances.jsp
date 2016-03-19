@@ -73,7 +73,7 @@
                             <label for="calidad">Fecha Inicio:</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                <input type="date" required class="form-control" id="fechaIni"  required="true" name="fechaIni"/>
+                                <input type="date" required class="form-control" id="fecha_ini"  required="true" name="fecha_ini"/>
                             </div>
                         </div> 
 
@@ -82,7 +82,7 @@
                             <label for="calidad">Fecha Fin:</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                <input type="date" required class="form-control" id="fechaFin" required="true" name="fechaFin"/>
+                                <input type="date" required class="form-control" id="fecha_fin" required="true" name="fecha_fin"/>
                             </div>
                         </div> 
                     </div>

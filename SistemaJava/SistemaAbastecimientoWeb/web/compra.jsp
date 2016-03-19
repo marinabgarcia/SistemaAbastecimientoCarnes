@@ -624,7 +624,8 @@
                                         <table id="gridPagos" name="gridPagos" class="table table-hover table-striped" >
                                             <thead>
                                                 <tr>
-                                                    <th data-column-id="idTransaccion" data-visible="false" data-sortable="true" data-identifier="true" data-order="asc" data-header-css-class="commandIdArticulo" data-type="numeric">Id Transaccion</th>
+                                                    <th data-column-id="idCP" data-visible="false" data-sortable="false" data-identifier="true">Id Transaccion</th>
+                                                    <th data-column-id="idTransaccionS" data-visible="false" data-sortable="true" data-order="asc" data-header-css-class="commandIdArticulo" data-type="numeric">Id Transaccion</th>
                                                     <th data-column-id="tipoTransaccion" data-visible="false" data-sortable="false">Tipo transaccion</th>
                                                     <th data-column-id="formaDePago" data-sortable="true">Forma de Pago</th>
                                                     <th data-column-id="montoPago" data-formatter="precio" data-sortable="true">Monto</th>
@@ -1781,13 +1782,62 @@
                             "precio": function (column, row)
                             {
                                 return "<span class=\"label label-default\">$ " + row.montoPago + "</span>";
+                            },
+                            "commands": function (column, row)
+                            {
+                                return "<button type=\"button\" id=\"" + row.idCP + "-button1\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.idCP + "\" data-toggle=\"tooltip\" data-original-title=\"Cambiar Precio\" style=\"width:25px; margin-top:5px; vertical-align:center;\"><span id=\"" + row.idCP + "-span1\" class=\"fa fa-trash\" style=\"color:black;\"></span></button> ";
                             }
 
                         }}).on("loaded.rs.jquery.bootgrid", function (e) {
                         grid2.find(".command-delete").on("click", function (e) {
-                            borrar($(this).data("row-id"));
+                            var datos = $('#gridPagos').bootgrid().data('.rs.jquery.bootgrid').currentRows;
+                            for (var i = 0; i < datos.length; i++) {
+                                if (datos[i].idCP == $(this).data("row-id")) {
+                                    rowP = datos[i];
+                                }
+                            }
+
+                            $.post("eliminarPago", {idPago: rowP.idTransaccionS,fechaPago:rowP.fechaPagoS,horaPago:rowP.horaPagoS}, function (rta) {
+                                if (rta == '') {
+                                    $('#gridPagos').bootgrid('reload');
+                                    $('#grid3').bootgrid('reload');
+                                    totalPagado = 0;
+                                    setTimeout(function () {
+                                        var datosPagos = $('#gridPagos').bootgrid().data('.rs.jquery.bootgrid').currentRows;
+                                        for (var i = 0; i < datosPagos.length; i++) {
+                                            totalPagado = totalPagado + datosPagos[i].montoPago;
+                                        }
+                                        document.getElementById("totalPagado").value = totalPagado;
+                                        precioTotalCompra = document.getElementById("totalCompraRemitoP").value;
+                                        document.getElementById("totalAdeudado").value = Math.round((precioTotalCompra - totalPagado) * 100) / 100;
+                                        //$('[type="numeric"].montoPago').prop('max', Math.round((row.precioTotalCompra - totalPagado) * 100) / 100);
+                                        document.formPago.montoPago.setAttribute("max", Math.round((precioTotalCompra - totalPagado) * 100) / 100);
+                                        var datos = $('#grid3').bootgrid().data('.rs.jquery.bootgrid').currentRows;
+                                        for (var i = 0; i < datos.length; i++) {
+                                            if (datos[i].idCompraS == seleccion) {
+                                                row = datos[i];
+                                            }
+                                        }
+                                        document.getElementById("fechaUPagoCompraP").value = row.fechaUPagoCompraS;
+                                        document.getElementById("horaUPagoCompraP").value = row.horaUPagoCompraS;
+                                        document.getElementById("estadoCompraP").value = row.estadoCompra;
+                                        if (row.estadoCompra == "Pagado")
+                                        {
+                                            document.getElementById("btnNuevoPago").disabled = true;
+                                        }
+                                        else
+                                        {
+                                            document.getElementById("btnNuevoPago").disabled = false;
+                                        }
+                                    }, 500);
+                                    } 
+                                    else {
+                                    document.getElementById("alertaError").style.display = "inline";
+                                    document.getElementById("error").innerHTML = rta;
+                                }
                         });
                     })
+                    });
                     setTimeout(function () {
                         var datosPagos = $('#gridPagos').bootgrid().data('.rs.jquery.bootgrid').currentRows;
                         for (var i = 0; i < datosPagos.length; i++)

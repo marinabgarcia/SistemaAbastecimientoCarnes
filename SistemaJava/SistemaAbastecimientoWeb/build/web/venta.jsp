@@ -755,12 +755,13 @@
                                         <table id="gridPagos" name="gridPagos" class="table table-hover table-striped" >
                                             <thead>
                                                 <tr>
-                                                    <th data-column-id="idTransaccion" data-visible="false" data-sortable="true" data-identifier="true" data-order="asc" data-header-css-class="commandIdArticulo" data-type="numeric">Id Transaccion</th>
+                                                    <th data-column-id="idCP" data-visible="false" data-sortable="false" data-identifier="true">Id Transaccion</th>
+                                                    <th data-column-id="idTransaccionS" data-visible="true" data-sortable="true" data-order="asc" data-header-css-class="commandIdArticulo">Id Transaccion</th>
                                                     <th data-column-id="tipoTransaccion" data-visible="false" data-sortable="false">Tipo transaccion</th>
                                                     <th data-column-id="formaDePago" data-sortable="true">Forma de Pago</th>
                                                     <th data-column-id="montoPago" data-formatter="precio" data-sortable="true">Monto</th>
-                                                    <th data-column-id="fechaPagoS"  data-sortable="true">Fecha</th>
-                                                    <th data-column-id="horaPagoS" data-sortable="false">Hora</th>
+                                                    <th data-column-id="fechaPagoS"  data-sortable="true" >Fecha</th>
+                                                    <th data-column-id="horaPagoS" data-sortable="false" >Hora</th>
                                                     <th data-column-id="nroCheque" data-sortable="false">Cheque</th>
                                                     <th data-column-id="bancoCheque" data-sortable="false">Banco</th>
                                                     <th data-column-id="nombreCheque" data-sortable="false">Nombre</th>
@@ -839,8 +840,7 @@
                                             <select required class="form-control" id="formaDePago" name="formaDePago" style="font-size:20px; height: 40px;"
                                                     onchange="if (document.getElementById('formaDePago').value == 'Cheque') {
                                                                 document.getElementById('infoCheque').style.display = 'inline';
-                                                            }
-                                                            else {
+                                                            } else {
                                                                 document.getElementById('infoCheque').style.display = 'none';
                                                             }">
                                                 <option value="Efectivo">Efectivo</option>
@@ -1095,8 +1095,7 @@
                                     if (rta != 0)
                                     {
                                         document.getElementById("alertAdvertencia").style.display = 'block';
-                                    }
-                                    else
+                                    } else
                                     {
                                         {
                                             document.getElementById("alertAdvertencia").style.display = 'none';
@@ -1328,8 +1327,7 @@
                                                         $("#" + (id + "-tick")).addClass('fa-check');
                                                         $("#" + (id + "-div")).addClass('input-group');
                                                         document.getElementById(id + "-tick").style.color = 'green';
-                                                    }
-                                                    else
+                                                    } else
                                                     {
                                                         document.getElementById("errorModificarD").style.display = "inline";
                                                         document.getElementById("errorModificar").innerHTML = rta;
@@ -1576,8 +1574,7 @@
                         document.getElementById("idVentaRemito").value = rta;
                         document.getElementById("copiaRemito").value = 1;
                         document.getElementById("remito").submit();
-                    }
-                    else
+                    } else
                     {
                         document.getElementById("alertaError").style.display = "inline";
                         document.getElementById("error").innerHTML = rta;
@@ -1668,7 +1665,7 @@
                     var datosClientes = $('#gridClientes').bootgrid().data('.rs.jquery.bootgrid').currentRows;
                     $.post('cargarCliente', {dniCliente: row.dniCliente}, function (rta) {
                         rowCliente = rta.split('-');
-                        document.getElementById("nombreCliente").value =  rowCliente[1];
+                        document.getElementById("nombreCliente").value = rowCliente[1];
                         document.getElementById("apellidoCliente").value = rowCliente[2];
                         document.getElementById("razonSocialCliente").value = rowCliente[3];
                         document.getElementById("idTipoCliente").value = rowCliente[4];
@@ -1749,8 +1746,7 @@
                             $('#agregarVentana').modal('toggle');
                         }, 200);
                     })
-                }
-                else
+                } else
                 {
                     document.getElementById("alerta").style.display = "inline";
                 }
@@ -1803,8 +1799,7 @@
                         if (row.estadoVenta == "Pagado")
                         {
                             document.getElementById("btnNuevoPago").disabled = true;
-                        }
-                        else
+                        } else
                         {
                             document.getElementById("btnNuevoPago").disabled = false;
                         }
@@ -1831,13 +1826,64 @@
                                 "precio": function (column, row)
                                 {
                                     return "<span class=\"label label-default\">$ " + row.montoPago + "</span>";
+                                },
+                                "commands": function (column, row)
+                                {
+                                    return "<button type=\"button\" id=\"" + row.idCP + "-button1\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.idCP + "\" data-toggle=\"tooltip\" data-original-title=\"Cambiar Precio\" style=\"width:25px; margin-top:5px; vertical-align:center;\"><span id=\"" + row.idCP + "-span1\" class=\"fa fa-trash\" style=\"color:black;\"></span></button> ";
                                 }
 
                             }}).on("loaded.rs.jquery.bootgrid", function (e) {
+
                             grid2.find(".command-delete").on("click", function (e) {
-                                borrar($(this).data("row-id"));
+                                var datos = $('#gridPagos').bootgrid().data('.rs.jquery.bootgrid').currentRows;
+                                for (var i = 0; i < datos.length; i++) {
+                                    if (datos[i].idCP == $(this).data("row-id")) {
+                                        rowP = datos[i];
+                                    }
+                                }
+
+                                $.post("eliminarPago", {idPago: rowP.idTransaccionS,fechaPago:rowP.fechaPagoS,horaPago:rowP.horaPagoS}, function (rta) {
+                                    if (rta == '') {
+                                        $('#gridPagos').bootgrid('reload');
+                                        $('#grid3').bootgrid('reload');
+                                        totalPagado = 0;
+                                        setTimeout(function () {
+                                            var datosPagos = $('#gridPagos').bootgrid().data('.rs.jquery.bootgrid').currentRows;
+                                            for (var i = 0; i < datosPagos.length; i++) {
+                                                totalPagado = totalPagado + datosPagos[i].montoPago;
+                                            }
+                                            document.getElementById("totalPagado").value = totalPagado;
+                                            precioTotalCompra = document.getElementById("totalCompraP").value;
+                                            document.getElementById("totalAdeudado").value = Math.round((precioTotalCompra - totalPagado) * 100) / 100;
+                                            //$('[type="numeric"].montoPago').prop('max', Math.round((row.precioTotalCompra - totalPagado) * 100) / 100);
+                                            document.formPago.montoPago.setAttribute("max", Math.round((precioTotalCompra - totalPagado) * 100) / 100);
+                                            var datos = $('#grid3').bootgrid().data('.rs.jquery.bootgrid').currentRows;
+                                            for (var i = 0; i < datos.length; i++) {
+                                                if (datos[i].idVentaS == seleccion) {
+                                                    row = datos[i];
+                                                }
+                                            }
+                                            document.getElementById("fechaUCobroVentaP").value = row.fechaUCobroVentaS;
+                                            document.getElementById("horaUCobroVentaP").value = row.horaUCobroVentaS;
+                                            document.getElementById("estadoVentaP").value = row.estadoVenta;
+                                            if (row.estadoVenta == "Pagado")
+                                            {
+                                                document.getElementById("btnNuevoPago").disabled = true;
+                                            } else
+                                            {
+                                                document.getElementById("btnNuevoPago").disabled = false;
+                                            }
+                                        }, 500);
+                                       
+                                    } else {
+                                        document.getElementById("alertaError").style.display = "inline";
+                                        document.getElementById("error").innerHTML = rta;
+                                    }
+                                        
+
+                                });
                             });
-                        })
+                        });
                         setTimeout(function () {
                             var datosPagos = $('#gridPagos').bootgrid().data('.rs.jquery.bootgrid').currentRows;
                             for (var i = 0; i < datosPagos.length; i++)
@@ -1851,13 +1897,12 @@
                             document.formPago.montoPago.setAttribute("max", Math.round((row.precioTotalVenta - totalPagado) * 100) / 100);
                         }, 300);
                         $('#ventanaPagos').modal('toggle');
-                });
-                }
-                else
+                    });
+                } else
                 {
                     document.getElementById("alerta").style.display = "inline";
                 }
-               
+
             }
             function nuevoPago()
             {
@@ -1880,8 +1925,7 @@
                     if (rta === "")
                     {
 
-                    }
-                    else
+                    } else
                     {
                         document.getElementById("alertaError").style.display = "inline";
                         document.getElementById("error").innerHTML = rta;
@@ -1912,8 +1956,7 @@
                         if (row.estadoVenta == "Pagado")
                         {
                             document.getElementById("btnNuevoPago").disabled = true;
-                        }
-                        else
+                        } else
                         {
                             document.getElementById("btnNuevoPago").disabled = false;
                         }
@@ -1950,8 +1993,7 @@
                     document.getElementById("idVentaEstado").value = row.idVentaS;
                     document.getElementById("estadoEstado").value = row.estadoVenta;
                     $('#ventanaEstadoEntregado').modal('show');
-                }
-                else
+                } else
                 {
                     document.getElementById("alerta").style.display = "inline";
                 }
@@ -1963,8 +2005,7 @@
                     {
                         $('#ventanaEstadoEntregado').modal('hide');
                         $("#grid3").bootgrid('reload');
-                    }
-                    else
+                    } else
                     {
                         document.getElementById("alertaError").style.display = "inline";
                         document.getElementById("error").innerHTML = rta;
@@ -1989,8 +2030,7 @@
                     document.getElementById("fechaHoyE").value = (row.fechaVentaS);
                     document.getElementById("horaHoyE").value = row.horaVentaS;
                     $('#ventanaEliminar').modal('show');
-                }
-                else
+                } else
                 {
                     document.getElementById("alerta").style.display = "inline";
                 }
@@ -2001,8 +2041,7 @@
                     if (rta === "")
                     {
                         $('#ventanaEliminar').modal('hide');
-                    }
-                    else
+                    } else
                     {
                         document.getElementById("alertaError").style.display = "inline";
                         document.getElementById("error").innerHTML = rta;
@@ -2013,7 +2052,7 @@
             }
 
             function btnReimprimirOnclick()
-            {                 
+            {
                 if (seleccion != 0)
                 {
                     var datos = $('#grid3').bootgrid().data('.rs.jquery.bootgrid').currentRows;
@@ -2028,14 +2067,13 @@
                     document.getElementById("idVentaRemito").value = row.idVentaS;
                     document.getElementById("copiaRemito").value = 1;
                     document.getElementById("remito").submit();
-                }
-                else
+                } else
                 {
                     document.getElementById("alerta").style.display = "inline";
                 }
             }
-            
-           function cambiarDescripcion()
+
+            function cambiarDescripcion()
             {
                 descripcionArticulo = 'null';
                 document.getElementById("descripcionArticulo").value = "";
@@ -2049,8 +2087,7 @@
                     if (descripcionArticulo == "null")
                     {
                         document.getElementById("idArticulo").setCustomValidity("El proveedor no tiene registro de precio para este articulo");
-                    }
-                    else
+                    } else
                     {
                         document.getElementById("idArticulo").setCustomValidity("");
                         document.getElementById("descripcionArticulo").value = descripcionArticulo;
@@ -2062,8 +2099,7 @@
                         {
                             document.getElementById("idArticulo").setCustomValidity("El articulo ya se registro");
                             break;
-                        }
-                        else
+                        } else
                         {
                             document.getElementById("idArticulo").setCustomValidity("");
                         }
@@ -2074,8 +2110,8 @@
                     {
                         document.getElementById("idArticulo").setCustomValidity("El proveedor no tiene registro de precio para este articulo");
                     }
-                    
-                    if(stockUnidad<=0)
+
+                    if (stockUnidad <= 0)
                     {
                         document.getElementById("idArticulo").setCustomValidity("No hay stock disponible para la venta de este artículo.");
                         descripcionArticulo = '';
@@ -2099,8 +2135,7 @@
                 if (stockUnidad - document.getElementById('pesoLineaVenta').value < 0)
                 {
                     document.getElementById("pesoLineaVenta").setCustomValidity("No hay stock suficiente para la venta de esta cantidad de artículos.");
-                }
-                else
+                } else
                 {
                     document.getElementById("pesoLineaVenta").setCustomValidity("");
                 }
@@ -2161,8 +2196,7 @@
                 if (datosLineaVenta.length == 0)
                 {
                     document.getElementById("dniCliente").setCustomValidity("No se ha registrado ningun articulo");
-                }
-                else
+                } else
                 {
                     document.getElementById("dniCliente").setCustomValidity("");
                     $('#formPrincipal').submit();

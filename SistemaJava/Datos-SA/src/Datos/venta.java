@@ -359,4 +359,52 @@ public class venta {
             desconectar();
         }
     }
+     
+      public Entidades.Venta getOne(long idVenta)
+            throws SQLException, ClassNotFoundException, Exception {
+        try {
+            conectar();
+            String sql = "SELECT * FROM venta ven where idVenta = ?;";
+    
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setLong(1, idVenta);
+            ResultSet rs = ps.executeQuery();
+        
+            Entidades.Venta venta = new Entidades.Venta();
+            while (rs.next()) {
+                venta.setIdVenta(rs.getLong("idVenta"));
+                venta.setIdVentaS(rs.getString("idVenta"));
+                venta.setDniCliente(rs.getLong("dniCliente"));
+//              venta.setCuitCliente(rs.getLong("cuitCliente"));
+                venta.setDniUsuario(rs.getLong("dniUsuario"));
+                venta.setPrecioTotalVenta(rs.getDouble("precioTotalVenta"));
+                venta.setFechaEntregaVentaS(rs.getString("fechaEntregaVenta"));
+                venta.setFechaEntregaVenta(rs.getDate("fechaEntregaVenta"));
+                venta.setFechaVentaS(rs.getString("fechaVenta"));
+                venta.setFechaUCobroVentaS(rs.getString("fechaUCobroVenta"));
+                venta.setFechaVencimientoVentaS(rs.getString("fechaVencimiento"));
+                venta.setHoraVentaS(rs.getString("horaVenta"));
+                venta.setHoraEntregaVentaS(rs.getString("horaEntregaVenta"));
+                venta.setHoraEntregaVenta(rs.getTime("horaEntregaVenta"));
+                venta.setHoraUCobroVentaS(rs.getString("horaUCobroVenta"));
+                venta.setEstadoVenta(rs.getString("estadoVenta"));
+                venta.setNroRemitoVenta(rs.getString("nroRemitoVenta"));
+                venta.setNroFacturaVenta(rs.getString("nroFacturaVenta"));
+//              venta.setCliente(rs.getString("nombreCliente")+" "+rs.getString("apellidoCliente"));
+//              venta.setRazonSocialCliente(rs.getString("razonSocialCliente"));
+
+            }
+            desconectar();
+            return venta;
+
+        } catch (SQLException Ex) {
+            throw Ex;
+        } catch (Exception Ex) {
+            throw Ex;
+        } finally {
+            desconectar();
+        }
+
+    }
+  
 }

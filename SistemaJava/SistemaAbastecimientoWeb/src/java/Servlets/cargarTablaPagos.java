@@ -79,7 +79,7 @@ public class cargarTablaPagos extends HttpServlet {
             int current = Integer.parseInt(request.getParameter("current"));
             long idTransaccion = Long.parseLong(request.getParameter("idTransaccion"));
             int rowCount = Integer.parseInt(request.getParameter("rowCount"));
-            String sortidTransaccion = request.getParameter("sort[idTransaccion]");
+            String sortidTransaccion = request.getParameter("sort[idTransaccionS]");
             String sortformaDePago = request.getParameter("sort[formaDePago]");
             String sortmontoPago= request.getParameter("sort[montoPago]");
             String sortfechaPago = request.getParameter("sort[fechaPagoS]");

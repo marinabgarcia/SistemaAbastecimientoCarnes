@@ -74,10 +74,11 @@ public class ImprimirBalance extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        // processRequest(request, response);
-        Date fechaIni = Date.valueOf(request.getParameter("fechaIni"));
-        Date fechaFin = Date.valueOf(request.getParameter("fechaFin"));
-         request.setAttribute("fechaIni", fechaIni);
-         request.setAttribute("fechaFin", fechaFin);
+        Date fechaIni = Date.valueOf(request.getParameter("fecha_ini"));
+        Date fechaFin = Date.valueOf(request.getParameter("fecha_fin"));
+         request.setAttribute("fechaIni", request.getParameter("fecha_ini"));
+         request.setAttribute("fechaFin", request.getParameter("fecha_fin"));
+         System.out.println("Servlets.ImprimirBalance.doPost()"+request.getParameter("fecha_ini"));
         request.getRequestDispatcher("balancejasper.jsp").forward(request, response);
     }
 

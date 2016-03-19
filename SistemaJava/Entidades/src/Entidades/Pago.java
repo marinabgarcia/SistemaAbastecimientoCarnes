@@ -15,6 +15,7 @@ import java.sql.Date;
  */
 public class Pago {
     private long idTransaccion;
+    private String idTransaccionS;
     private String tipoTransaccion;
     private String formaDePago;
     private double montoPago;
@@ -34,6 +35,7 @@ public class Pago {
     private String id;
     private String telefono;
     private String celular;
+    private String idCP;
 
     /**
      * @return the idTransaccion
@@ -300,5 +302,34 @@ public class Pago {
     public void setCelular(String celular) {
         this.celular = celular;
     }
+
+    /**
+     * @return the idTransaccionS
+     */
+    public String getIdTransaccionS() {
+        return idTransaccionS;
+    }
+
+    /**
+     * @param idTransaccionS the idTransaccionS to set
+     */
+    public void setIdTransaccionS(String idTransaccionS) {
+        this.idTransaccionS = idTransaccionS;
+    }
+
+    /**
+     * @return the idCP
+     */
+    public String getIdCP() {
+        return idCP;
+    }
+
+    /**
+     * @param idCP the idCP to set
+     */
+    public void setIdCP(String idCP) {
+        this.idCP = idCP;
+    }
+    
     
 }

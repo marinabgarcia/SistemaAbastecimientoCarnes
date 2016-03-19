@@ -232,6 +232,10 @@
         <servlet-name>cargarCliente</servlet-name>
         <servlet-class>FuncionalidadAdicional.cargarCliente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>eliminarPago</servlet-name>
+        <servlet-class>FuncionalidadAdicional.eliminarPago</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ABMArticulo</servlet-name>
         <url-pattern>/ABMArticulo</url-pattern>
@@ -463,6 +467,10 @@
     <servlet-mapping>
         <servlet-name>cargarCliente</servlet-name>
         <url-pattern>/cargarCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>eliminarPago</servlet-name>
+        <url-pattern>/eliminarPago</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

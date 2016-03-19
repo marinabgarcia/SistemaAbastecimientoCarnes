@@ -8,10 +8,12 @@ package Datos;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -118,7 +120,9 @@ public class Pago {
             ArrayList<Entidades.Pago> pagos = new ArrayList<Entidades.Pago>();
             while (rs.next()) {
                 Entidades.Pago pago = new Entidades.Pago();
+                pago.setIdCP(rs.getString("idTransaccion")+rs.getString("fechaPago")+rs.getString("horaPago"));
                 pago.setIdTransaccion(rs.getLong("idTransaccion"));
+                pago.setIdTransaccionS(rs.getString("idTransaccion"));
                 pago.setTipoTransaccion(rs.getString("tipoTransaccion"));
                 pago.setFormaDePago(rs.getString("formaDePago"));
                 pago.setMontoPago(rs.getDouble("montoPago"));
@@ -169,6 +173,7 @@ public class Pago {
             while (rs.next()) {
                 Entidades.Pago pago = new Entidades.Pago();
                 pago.setIdTransaccion(rs.getLong("idTransaccion"));
+                pago.setIdTransaccionS(rs.getString("idTransaccion"));
                 pago.setTipoTransaccion(rs.getString("tipoTransaccion"));
                 pago.setFormaDePago(rs.getString("formaDePago"));
                 pago.setMontoPago(rs.getDouble("montoPago"));
@@ -206,5 +211,31 @@ public class Pago {
             desconectar();
         }
 
+    }
+
+    public void eliminarPago(long idPago,Date fechaPago,Time horaPago) throws SQLException, Exception {
+                try {
+
+            conectar();
+            // the mysql insert statement
+
+            String query = "DELETE FROM pago WHERE idTransaccion=? and fechaPago=? and horaPago=?";
+
+            // create the mysql insert preparedstatement
+            PreparedStatement ps = conexion.prepareStatement(query);
+            ps.setLong(1, idPago);
+            ps.setDate(2, fechaPago);
+            ps.setTime(3, horaPago);
+
+            // execute the preparedstatement
+            int i =ps.executeUpdate();
+        } catch (SQLException exc) {
+            throw exc;
+        } catch (Exception Ex) {
+            throw Ex;
+        } finally {
+            desconectar();
+        }
+       
     }
 }

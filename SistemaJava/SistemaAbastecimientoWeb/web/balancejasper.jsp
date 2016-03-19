@@ -4,6 +4,9 @@
     Author     : Hamal
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="org.apache.poi.util.SystemOutLogger"%>
 <%@page import="net.sf.jasperreports.engine.xml.JRXmlLoader"%>
 <%@page import="net.sf.jasperreports.engine.design.JasperDesign"%>
 <%@page import="org.xml.sax.InputSource"%>
@@ -18,7 +21,7 @@
 <%@page import="java.io.*"%>
 <%@page import="java.sql.*"%>
 <%@page import="java.util.*"%>
-<%@page import="java.sql.Date"%>
+<%@page import="java.util.Date"%>
 
 <%@page import="net.sf.jasperreports.engine.*"%>
 <html>
@@ -55,8 +58,12 @@
               JasperDesign _des = JRXmlLoader.load(context.getRealPath("Balance.jrxml"));
              _des.setPageHeight(800);
              _des.setPageWidth(600);
-            Date fechaInicio =Date.valueOf(request.getAttribute("fechaIni").toString());
-            Date fechaFin =Date.valueOf(request.getAttribute("fechaFin").toString());
+             
+             String testDate = request.getAttribute("fechaIni").toString();
+             DateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+            Date fechaInicio = formatter.parse(testDate);
+            testDate =request.getAttribute("fechaFin").toString();
+            Date fechaFin =formatter.parse(testDate);
             Map parameters = new HashMap();
             parameters.put("fecha_ini", fechaInicio);
             parameters.put("fecha_fin", fechaFin);

@@ -50,8 +50,8 @@
             //File reportFile = new File(context.getRealPath("ticket.jasper"));
             //File reportFile = new File(application.getRealPath("ticket.jasper"));
             JasperDesign _des = JRXmlLoader.load(application.getRealPath("Remito.jrxml"));
-             _des.setPageHeight(842);
-             _des.setPageWidth(595);
+             _des.setPageHeight(595);
+             _des.setPageWidth(421);
             long idVenta = Long.parseLong(request.getAttribute("idVenta").toString());
             String copia=request.getAttribute("copia").toString();
             Map parameters = new HashMap();

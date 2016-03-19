@@ -433,4 +433,8 @@ public class Controlador {
           return cdcompra.compraMensualActual();
       }
 
+    public void eliminarPago(long idPago,Date fechaPago,Time horaPago) throws Exception {
+          cdpagos.eliminarPago(idPago,fechaPago,horaPago);     
+   }
+
 }

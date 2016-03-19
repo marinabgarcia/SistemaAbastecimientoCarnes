@@ -6,8 +6,11 @@
 package Negocio;
 
 import Entidades.Pago;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -29,5 +32,32 @@ public class CatalogoDePagos {
     public ArrayList<Entidades.Pago> getAllPagosTipo(String sortname, String sortorder, String search, String tipoTransaccion)
             throws SQLException, ClassNotFoundException, Exception {
         return pagoDatos.getAllPagosTipo(sortname, sortorder, search, tipoTransaccion);
+    }
+
+    void eliminarPago(long idPago, Date fechaPago, Time horaPago) throws Exception {
+
+        List<Entidades.Pago> listPagos = this.getAllPagos("idTransaccion", "asc", "", idPago);
+        pagoDatos.eliminarPago(idPago, fechaPago, horaPago);
+
+        if (listPagos.get(0).getTipoTransaccion().equals("venta")) {
+            Datos.venta ventaDatos = new Datos.venta();
+            Entidades.Venta venta = ventaDatos.getOne(listPagos.get(0).getIdTransaccion());
+            if (listPagos.size() - 1 == 0) {
+                if (venta.getFechaEntregaVenta() != null) {
+                    ventaDatos.setEstadoParcial("Entregado", venta.getIdVenta());
+                } else {
+                    ventaDatos.setEstadoParcial("Registrado", venta.getIdVenta());
+                }
+            } else {
+                ventaDatos.setEstadoParcial("Pago Parcial", venta.getIdVenta());
+            }
+        } else {
+            Datos.Compra compraDatos = new Datos.Compra();
+            if (listPagos.size() - 1 == 0) {
+                compraDatos.setEstadoParcial("Entregado", idPago);
+            } else {
+                compraDatos.setEstadoParcial("Pago Parcial", idPago);
+            }
+        }
     }
 }
